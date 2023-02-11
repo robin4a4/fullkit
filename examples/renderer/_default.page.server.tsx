@@ -6,11 +6,13 @@ import {Includer} from "compile-include-html"
 export { render }
 
 function renderPage(pageContext: PageContextServer) {
-  const { Page, urlPathname } = pageContext
+  const { Page, urlPathname, exports } = pageContext
   const {template} = Page()
   const includer = new Includer();
+  const layout = exports.layout as string
   const source = includer.readFile(`./pages/${urlPathname}/${template}`)
-  return includer.transform(source)
+  const transformedSource = includer.transform(source)
+  return layout.replace('<slot/>', transformedSource)
 }
 
 
@@ -21,7 +23,7 @@ async function render(pageContext: PageContextServer) {
   const title = (documentProps && documentProps.title) || 'Vite SSR app'
   const desc = (documentProps && documentProps.description) || 'App using Vite + vite-plugin-ssr'
   const html = renderPage(pageContext)
-  
+
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">
       <head>

@@ -1,4 +1,4 @@
-import {Includer} from "compile-include-html"
+export { layout } from '../../layouts/layout'
 
 
 function createPage(template: string, context: {}) {
