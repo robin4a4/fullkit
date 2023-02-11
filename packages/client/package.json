@@ -1,0 +1,21 @@
+{
+  "name": "@renderkit/client",
+  "version": "0.1.2",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "pnpm run build --watch",
+    "build": "tsup src/index.ts --format cjs,esm --dts"
+  },
+  "dependencies": {
+    "riot-tmpl": "^3.0.8"
+  },
+  "devDependencies": {
+    "tsup": "^6.3.0",
+    "vitest": "^0.28.4"
+  }
+}

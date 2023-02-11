@@ -1,0 +1,26 @@
+{
+  "name": "renderkit",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "examples",
+    "packages/client"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "test": "turbo run test --parallel",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "publish-packages": "pnpm run build && pnpm -r publish"
+  },
+  "devDependencies": {
+    "prettier": "latest",
+    "turbo": "latest"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "packageManager": "pnpm@7.14.0"
+}
