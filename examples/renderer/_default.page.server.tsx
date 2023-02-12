@@ -7,7 +7,7 @@ export { render }
 
 function renderPage(pageContext: PageContextServer) {
   const { Page, urlPathname, exports } = pageContext
-  const {template} = Page()
+  const {template} = new Page().get()
   const includer = new Includer();
   const layout = exports.layout as string
   const source = includer.readFile(`./pages/${urlPathname}/${template}`)

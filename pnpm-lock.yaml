@@ -13,6 +13,7 @@ importers:
   examples:
     specifiers:
       '@renderkit/client': workspace:*
+      '@renderkit/server': workspace:*
       '@types/compression': ^1.7.2
       '@types/express': ^4.17.14
       '@types/node': ^18.11.9
@@ -32,6 +33,7 @@ importers:
       vite-plugin-ssr: ^0.4.77
     dependencies:
       '@renderkit/client': link:../packages/client
+      '@renderkit/server': link:../packages/server
       '@types/compression': 1.7.2
       '@types/express': 4.17.17
       '@types/node': 18.13.0
@@ -60,6 +62,12 @@ importers:
     devDependencies:
       tsup: 6.6.0
       vitest: 0.28.4
+
+  packages/server:
+    specifiers:
+      tsup: ^6.3.0
+    devDependencies:
+      tsup: 6.6.0
 
 packages:
 
