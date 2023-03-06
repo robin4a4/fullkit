@@ -1,2 +1,2 @@
 export { View } from "./view";
-// export { startServer } from "./server";
+export { startServer } from "./server";

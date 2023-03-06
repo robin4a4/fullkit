@@ -8,12 +8,12 @@ import { fileURLToPath } from "url";
 
 const isProduction = process.env.NODE_ENV === "production";
 
+type TOptions = { root?: string };
+
 // not working
-export async function startServer(metaUrl: string) {
-  console.log("----- HERE -----");
-  console.log(metaUrl);
-  const __dirname = dirname(fileURLToPath(metaUrl));
-  const root = `${__dirname}/..`;
+export async function startServer(options?: TOptions) {
+  const processUrl = options?.root || import.meta.url || "";
+  const root = processUrl ? `${dirname(fileURLToPath(processUrl))}/..` : "";
   const app = express();
 
   app.use(compression());

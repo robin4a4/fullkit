@@ -1,10 +1,20 @@
 {
   "compilerOptions": {
+    "module": "ES2020",
+    "target": "ES2020",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "strictNullChecks": true,
     "strict": true,
     "noEmit": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "esm": true,
+    "compilerOptions": {
+      "moduleResolution": "Node16"
+    }
   },
   "include": [
     "src"
