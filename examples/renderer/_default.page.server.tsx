@@ -1,28 +1,36 @@
-import { escapeInject, dangerouslySkipEscape } from 'vite-plugin-ssr'
-import logoUrl from './logo.svg'
-import type { PageContextServer } from './types'
-import {Includer} from "compile-include-html"
+import { escapeInject, dangerouslySkipEscape } from "vite-plugin-ssr";
+import logoUrl from "./logo.svg";
+import type { PageContextServer } from "./types";
+import { HtmlParser } from "compile-include-html";
 
-export { render }
+export { render };
 
 function renderPage(pageContext: PageContextServer) {
-  const { Page, urlPathname, exports } = pageContext
-  const {template} = new Page().get()
-  const includer = new Includer();
-  const layout = exports.layout as string
-  const source = includer.readFile(`./pages/${urlPathname}/${template}`)
-  const transformedSource = includer.transform(source)
-  return layout.replace('<slot/>', transformedSource)
+  const { Page, urlPathname, exports } = pageContext;
+  const page = new Page();
+  const { template, context } = page.get();
+  const includer = new HtmlParser({ globalContext: context });
+  const layout = exports.layout as string;
+  const path =
+    urlPathname !== "/"
+      ? `./pages/${urlPathname}/${template}`
+      : `./pages/index/${template}`;
+  const source = includer.readFile(path);
+  const transformedSource = includer.transform(source);
+  if (layout) {
+    return layout.replace("<slot/>", transformedSource);
+  }
+  return transformedSource;
 }
 
-
 async function render(pageContext: PageContextServer) {
-
   // See https://vite-plugin-ssr.com/head
-  const { documentProps } = pageContext.exports
-  const title = (documentProps && documentProps.title) || 'Vite SSR app'
-  const desc = (documentProps && documentProps.description) || 'App using Vite + vite-plugin-ssr'
-  const html = renderPage(pageContext)
+  const { documentProps } = pageContext.exports;
+  const title = (documentProps && documentProps.title) || "Vite SSR app";
+  const desc =
+    (documentProps && documentProps.description) ||
+    "App using Vite + vite-plugin-ssr";
+  const html = renderPage(pageContext);
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">
@@ -36,9 +44,9 @@ async function render(pageContext: PageContextServer) {
       <body>
         <div id="page-view">${dangerouslySkipEscape(html)}</div>
       </body>
-    </html>`
+    </html>`;
 
   return {
     documentHtml,
-  }
+  };
 }

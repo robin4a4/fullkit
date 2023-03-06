@@ -3,11 +3,12 @@ export type { PageContextClient };
 export type { PageContext };
 export type { PageProps };
 
+import type { View } from "@renderkit/server";
 import type { PageContextBuiltIn } from "vite-plugin-ssr";
 // import type { PageContextBuiltInClient } from 'vite-plugin-ssr/client/router' // When using Client Routing
 import type { PageContextBuiltInClient } from "vite-plugin-ssr/client"; // When using Server Routing
 
-type Page = () => { template: string; context: {} };
+type Page = typeof View;
 type PageProps = {};
 
 export type PageContextCustom = {

@@ -4,7 +4,9 @@
   "private": true,
   "workspaces": [
     "examples",
-    "packages/client"
+    "packages/client",
+    "packages/server",
+    "packages/cli"
   ],
   "scripts": {
     "build": "turbo run build",

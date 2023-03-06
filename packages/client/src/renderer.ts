@@ -11,7 +11,10 @@ interface HTMLElementWithData extends HTMLElement {
 
 function getMountElementName() {
   const pathname = window.location.pathname;
-  return pathname.replace("/", "-").replace(/^-+/, "").replace(/-+$/, "");
+  return `"${pathname
+    .replaceAll("/", "-")
+    .replace(/^-+/, "")
+    .replace(/-+$/, "")}"`;
 }
 
 export function run<TContext extends (...args: any) => any>(

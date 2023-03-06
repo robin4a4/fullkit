@@ -8,7 +8,7 @@ export class NotImplementedError extends Error {
 export class View {
   templateName: string;
 
-  getContextData() {
+  getContextData(): Record<string, any> {
     throw new NotImplementedError();
   }
 
@@ -17,5 +17,9 @@ export class View {
       template: this.templateName,
       context: this.getContextData(),
     };
+  }
+
+  post(requestBody: Record<string, any>) {
+    return requestBody;
   }
 }
