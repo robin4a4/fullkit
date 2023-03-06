@@ -1,6 +1,6 @@
-import { View } from "@renderkit/server";
+// import { View } from "@renderkit/server";
 
 // TODO Error class
-export class Page extends View {
+export class Page {
   templateName = "error.html";
 }
