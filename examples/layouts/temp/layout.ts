@@ -1,7 +1,7 @@
 import { Layout } from "@renderkit/server";
 
-export class MainLayout extends Layout {
-  templateName = "layout.html";
+export class TestLayout extends Layout {
+  templateName = "test-layout.html";
 
   getContextData() {
     return {

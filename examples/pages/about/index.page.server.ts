@@ -1,9 +1,10 @@
 import { newSignal } from "@renderkit/client";
 import { Template } from "@renderkit/server";
+import { TestLayout } from "../../layouts/temp/layout";
 import { MainLayout } from "../../layouts/layout";
 
 export class Page extends Template {
-  templateName = "button.html";
+  templateName = "templates/about.html";
   layout = MainLayout;
 
   getContextData() {

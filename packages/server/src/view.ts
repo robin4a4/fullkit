@@ -14,6 +14,11 @@ type BaseTemplateConfig = {
 export class BaseTemplate {
   basePath: string;
   templateName: string;
+  urlPathname: BaseTemplateConfig["urlPathname"];
+
+  constructor(config: BaseTemplateConfig) {
+    this.urlPathname = config.urlPathname;
+  }
 
   createPath(): string {
     throw new NotImplementedError();
@@ -34,12 +39,6 @@ export class BaseTemplate {
 export class Template extends BaseTemplate {
   basePath = "./pages";
   layout?: typeof Layout;
-  urlPathname: BaseTemplateConfig["urlPathname"];
-
-  constructor(config: BaseTemplateConfig) {
-    super();
-    this.urlPathname = config.urlPathname;
-  }
 
   createPath() {
     return this.urlPathname !== "/"
@@ -49,7 +48,7 @@ export class Template extends BaseTemplate {
 
   render() {
     if (this.layout) {
-      const layout = new this.layout();
+      const layout = new this.layout({ urlPathname: this.urlPathname });
       const layoutHtml = layout.renderHtml();
       const contentHtml = super.renderHtml();
       return layoutHtml.replaceAll("<slot></slot>", contentHtml);
