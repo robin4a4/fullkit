@@ -1,4 +1,4 @@
-import { PageContextServer } from "./types";
+import { PageContextServer } from "../types";
 
 export function createHtml(pageContext: PageContextServer) {
   const { Page, urlPathname } = pageContext;

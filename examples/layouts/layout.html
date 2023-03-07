@@ -1,0 +1,9 @@
+<section>
+    test folder layout
+    <nav>
+        <ul>
+            <for condition="const item of nav"><li><a href="{item.href}" style="{item.isActive ? 'background-color: red;' : ''}">{item.name}</a></li></for/>
+        </ul>
+    </nav>
+    <slot></slot>
+</section>

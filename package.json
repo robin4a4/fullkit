@@ -6,7 +6,8 @@
     "examples",
     "packages/client",
     "packages/server",
-    "packages/cli"
+    "packages/cli",
+    "packages/renderer"
   ],
   "scripts": {
     "build": "turbo run build",

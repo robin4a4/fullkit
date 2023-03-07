@@ -1,7 +1,8 @@
-import { Layout } from "@renderkit/server";
+import { Layout } from "@renderkit/renderer/templating";
+import "../index.css";
 
 export class MainLayout extends Layout {
-  templateName = "temp/test-layout.html";
+  templateName = "layout.html";
 
   getContextData() {
     return {
@@ -10,12 +11,12 @@ export class MainLayout extends Layout {
         {
           href: "/about",
           name: "about",
-          style: this.urlPathname === "/about" ? "background: red;" : "",
+          isActive: this.urlPathname === "/about",
         },
         {
           href: "/",
           name: "home",
-          style: this.urlPathname === "/" ? "background: red;" : "",
+          isActive: this.urlPathname === "/",
         },
       ],
     };

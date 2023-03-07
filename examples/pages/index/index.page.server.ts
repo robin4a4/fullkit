@@ -1,4 +1,4 @@
-import { Template } from "@renderkit/server";
+import { Template } from "@renderkit/renderer/templating";
 import { MainLayout } from "../../layouts/layout";
 
 export class Page extends Template {

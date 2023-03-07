@@ -1,6 +1,7 @@
 import { escapeInject, dangerouslySkipEscape } from "vite-plugin-ssr";
-import logoUrl from "./logo.svg";
-import { createHtml, PageContextServer } from "@renderkit/server";
+import { PageContextServer } from "../types";
+import { createHtml } from "./createHtml";
+
 export { render };
 
 async function render(pageContext: PageContextServer) {
@@ -16,7 +17,6 @@ async function render(pageContext: PageContextServer) {
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
-        <link rel="icon" href="${logoUrl}" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="${desc}" />
         <title>${title}</title>

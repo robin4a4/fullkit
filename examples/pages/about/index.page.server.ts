@@ -1,6 +1,5 @@
 import { newSignal } from "@renderkit/client";
-import { Template } from "@renderkit/server";
-import { TestLayout } from "../../layouts/temp/layout";
+import { Template } from "@renderkit/renderer/templating";
 import { MainLayout } from "../../layouts/layout";
 
 export class Page extends Template {

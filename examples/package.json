@@ -7,6 +7,10 @@
     "server:prod": "cross-env NODE_ENV=production ts-node ./server/index.ts"
   },
   "dependencies": {
+    "@renderkit/cli": "workspace:*",
+    "@renderkit/client": "workspace:*",
+    "@renderkit/server": "workspace:*",
+    "@renderkit/renderer": "workspace:*",
     "@types/body-parser": "^1.19.2",
     "@types/compression": "^1.7.2",
     "@types/express": "^4.17.14",
@@ -18,13 +22,14 @@
     "express": "^4.18.1",
     "multer": "1.4.5-lts.1",
     "sirv": "^2.0.2",
-    "compile-include-html": "2.0.0",
-    "@renderkit/server": "workspace:*",
-    "@renderkit/client": "workspace:*",
-    "@renderkit/cli": "workspace:*",
     "typescript": "^4.9.4",
     "vite": "^4.0.3",
     "vite-plugin-ssr": "^0.4.77"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.21",
+    "tailwindcss": "^3.2.7"
+  }
 }
