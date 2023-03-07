@@ -12,7 +12,6 @@ type BaseTemplateConfig = {
 };
 
 export class BaseTemplate {
-  basePath: string;
   templateName: string;
   urlPathname: BaseTemplateConfig["urlPathname"];
 
@@ -20,14 +19,16 @@ export class BaseTemplate {
     this.urlPathname = config.urlPathname;
   }
 
-  createPath(): string {
+  get basePath(): string {
     throw new NotImplementedError();
   }
 
   renderHtml() {
-    const includer = new HtmlParser({ globalContext: this.getContextData() });
-    const path = this.createPath();
-    const source = includer.readFile(path);
+    const includer = new HtmlParser({
+      globalContext: this.getContextData(),
+      basePath: this.basePath,
+    });
+    const source = includer.readFile(this.templateName);
     return includer.transform(source);
   }
 
@@ -37,13 +38,12 @@ export class BaseTemplate {
 }
 
 export class Template extends BaseTemplate {
-  basePath = "./pages";
   layout?: typeof Layout;
 
-  createPath() {
+  get basePath(): string {
     return this.urlPathname !== "/"
-      ? `${this.basePath}/${this.urlPathname}/${this.templateName}`
-      : `${this.basePath}/index/${this.templateName}`;
+      ? `./pages${this.urlPathname}`
+      : `./pages/index`;
   }
 
   render() {
@@ -62,9 +62,11 @@ export class Template extends BaseTemplate {
 }
 
 export class Layout extends BaseTemplate {
-  basePath = "./layouts";
+  get basePath(): string {
+    return `./layouts`;
+  }
 
   createPath() {
-    return `${this.basePath}/${this.templateName}`;
+    return `${this.templateName}`;
   }
 }
