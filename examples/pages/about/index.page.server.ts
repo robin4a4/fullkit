@@ -1,10 +1,10 @@
 import { newSignal } from "@renderkit/client";
-import { View } from "@renderkit/server";
+import { Template } from "@renderkit/server";
+import { MainLayout } from "../../layouts/layout";
 
-export { layout } from "../../layouts/layout";
-
-export class Page extends View {
+export class Page extends Template {
   templateName = "button.html";
+  layout = MainLayout;
 
   getContextData() {
     const [isOpen, setIsOpen] = newSignal(false);
@@ -19,7 +19,3 @@ export class Page extends View {
     return super.post(requestBody);
   }
 }
-
-// import { startServer } from "@renderkit/server";
-
-// startServer(import.meta.url);

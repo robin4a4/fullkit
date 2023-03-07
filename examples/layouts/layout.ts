@@ -1,4 +1,15 @@
-import { HtmlParser } from "compile-include-html";
+import { Layout } from "@renderkit/server";
 
-const includer = new HtmlParser();
-export const layout = includer.readFile("./layouts/test.html");
+export class MainLayout extends Layout {
+  templateName = "test.html";
+
+  getContextData() {
+    return {
+      test: "salut",
+      nav: [
+        { href: "/about", name: "about" },
+        { href: "/", name: "home" },
+      ],
+    };
+  }
+}

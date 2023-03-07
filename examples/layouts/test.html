@@ -1,10 +1,8 @@
 <section>
     <nav>
         <ul>
-            <li>menu 1</li>
-            <li>menu 2</li>
-            <li>menu 3</li>
+            <for condition="const item of nav"><li><a href="{item.href}">{item.name}</a></li></for/>
         </ul>
     </nav>
-    <slot/>
+    <slot></slot>
 </section>

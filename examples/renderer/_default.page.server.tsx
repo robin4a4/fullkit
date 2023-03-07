@@ -1,27 +1,7 @@
 import { escapeInject, dangerouslySkipEscape } from "vite-plugin-ssr";
 import logoUrl from "./logo.svg";
-import type { PageContextServer } from "./types";
-import { HtmlParser } from "compile-include-html";
-
+import { createHtml, PageContextServer } from "@renderkit/server";
 export { render };
-
-function renderPage(pageContext: PageContextServer) {
-  const { Page, urlPathname, exports } = pageContext;
-  const page = new Page();
-  const { template, context } = page.get();
-  const includer = new HtmlParser({ globalContext: context });
-  const layout = exports.layout as string;
-  const path =
-    urlPathname !== "/"
-      ? `./pages/${urlPathname}/${template}`
-      : `./pages/index/${template}`;
-  const source = includer.readFile(path);
-  const transformedSource = includer.transform(source);
-  if (layout) {
-    return layout.replace("<slot/>", transformedSource);
-  }
-  return transformedSource;
-}
 
 async function render(pageContext: PageContextServer) {
   // See https://vite-plugin-ssr.com/head
@@ -30,7 +10,7 @@ async function render(pageContext: PageContextServer) {
   const desc =
     (documentProps && documentProps.description) ||
     "App using Vite + vite-plugin-ssr";
-  const html = renderPage(pageContext);
+  const html = createHtml(pageContext);
 
   const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">

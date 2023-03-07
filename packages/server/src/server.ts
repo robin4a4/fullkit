@@ -58,7 +58,7 @@ export async function startServer(options?: TOptions) {
     // @ts-ignore
     const { httpResponse, Page } = pageContext;
     if (!httpResponse) return next();
-    const page = new Page();
+    const page = new Page({ urlaPathname: "test" });
     page.post(req.body);
     const { body, statusCode, contentType, earlyHints } = httpResponse;
 

@@ -1,6 +1,6 @@
-import { View } from "@renderkit/server";
+import { Template } from "@renderkit/server";
 
-export class Page extends View {
+export class Page extends Template {
   templateName = "home.html";
 
   getContextData() {
