@@ -3,11 +3,32 @@
   "version": "0.0.0",
   "types": "./dist/renderer/index.d.ts",
   "exports": {
-    "./vite-plugin-ssr.config.js": "./dist/vite-plugin-ssr.config.js",
-    "./renderer/_default.page.client.js": "./dist/renderer/_default.page.client.js",
-    "./renderer/_default.page.server.js": "./dist/renderer/_default.page.server.js",
-    "./package.json": "./package.json",
-    "./templating": "./dist/templating/index.js"
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./vite-plugin-ssr.config.js": {
+      "types": "./dist/vite-plugin-ssr.config.d.ts",
+      "require": "./dist/vite-plugin-ssr.config.js",
+      "import": "./dist/vite-plugin-ssr.config.mjs"
+    },
+    "./renderer/_default.page.client.js": {
+      "types": "./dist/renderer/_default.page.client.d.ts",
+      "require": "./dist/renderer/_default.page.client.js",
+      "import": "./dist/renderer/_default.page.client.mjs"
+    },
+    "./renderer/_default.page.server.js": {
+      "types": "./dist/renderer/_default.page.server.d.ts",
+      "require": "./dist/renderer/_default.page.server.js",
+      "import": "./dist/renderer/_default.page.server.mjs"
+    },
+    "./templating": {
+      "types": "./dist/templating/index.d.ts",
+      "require": "./dist/templating/index.js",
+      "import": "./dist/templating/index.mjs"
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist/",
@@ -19,7 +40,7 @@
   },
   "scripts": {
     "dev": "pnpm run build --watch",
-    "build": "tsup"
+    "build": "tsup --format cjs,esm"
   },
   "devDependencies": {
     "tsup": "^6.3.0"
@@ -30,6 +51,5 @@
     "vite": "^4.0.3",
     "vite-plugin-ssr": "^0.4.77",
     "compile-include-html": "2.1.1"
-  },
-  "type": "module"
+  }
 }

@@ -1,1 +1,1 @@
-# @renderkit/server
+# @renderkit/renderer

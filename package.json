@@ -4,10 +4,12 @@
   "private": true,
   "workspaces": [
     "examples",
+    "testexamples",
     "packages/client",
     "packages/server",
     "packages/cli",
-    "packages/renderer"
+    "packages/renderer",
+    "packages/testrenderer"
   ],
   "scripts": {
     "build": "turbo run build",
