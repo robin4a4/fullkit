@@ -1,4 +1,5 @@
 import { HtmlParser } from "compile-include-html";
+import { BaseTemplateContext, TemplateContext } from "../types";
 
 export class NotImplementedError extends Error {
   constructor() {
@@ -23,16 +24,17 @@ export class BaseTemplate {
     throw new NotImplementedError();
   }
 
-  renderHtml() {
+  renderHtml(contextData: BaseTemplateContext) {
     const includer = new HtmlParser({
-      globalContext: this.getContextData(),
+      globalContext: contextData,
       basePath: this.basePath,
     });
     const source = includer.readFile(this.templateName);
     return includer.transform(source);
   }
+  getContextData(layoutContext?: BaseTemplateContext): BaseTemplateContext {
+    console.log("--- LAYOUT WHAT ---", layoutContext);
 
-  getContextData(): Record<string, any> {
     throw new NotImplementedError();
   }
 }
@@ -46,14 +48,32 @@ export class Template extends BaseTemplate {
       : `./pages/index`;
   }
 
+  getContextData(layoutContext?: BaseTemplateContext): BaseTemplateContext {
+    const userContext = super.getContextData();
+    if (layoutContext) {
+      return { test: "jkhfdkj" };
+    }
+    return super.getContextData();
+  }
+  /**
+   * Entry point for rendering a page
+   *
+   * @returns
+   */
   render() {
     if (this.layout) {
       const layout = new this.layout({ urlPathname: this.urlPathname });
-      const layoutHtml = layout.renderHtml();
-      const contentHtml = super.renderHtml();
+      const layoutContext = layout.getContextData();
+      const contentContext = this.getContextData(layoutContext);
+      console.log("--- layout --- >", layoutContext);
+      console.log("--- content --- >", contentContext);
+
+      const layoutHtml = layout.renderHtml(layoutContext);
+
+      const contentHtml = super.renderHtml(contentContext);
       return layoutHtml.replaceAll("<slot></slot>", contentHtml);
     }
-    return super.renderHtml();
+    return super.renderHtml(this.getContextData());
   }
 
   post(requestBody: Record<string, any>) {

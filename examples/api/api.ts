@@ -1,11 +1,11 @@
-import PrismaClient from "../lib/prisma";
-import type { Link } from "@prisma/client";
+// import PrismaClient from "../lib/prisma";
+// import type { Link } from "@prisma/client";
 
-const prisma = new PrismaClient();
+// const prisma = new PrismaClient();
 
 export async function api(
   method: string,
-  args?: { categoryName?: string; data?: Link },
+  args?: { categoryName?: string; data?: any },
   userAgent?: string | null
 ) {
   const hasCategory = args && args.categoryName;

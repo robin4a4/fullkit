@@ -4,16 +4,15 @@
   "type": "module",
   "types": "./dist/index.d.ts",
   "exports": {
+    ".": "./dist/index.js",
     "./vite-plugin-ssr.config.js": "./dist/vite-plugin-ssr.config.js",
     "./renderer/_default.page.server.js": "./dist/renderer/_default.page.server.js",
     "./renderer/_default.page.client.js": "./dist/renderer/_default.page.client.js",
-    "./templating": "./dist/templating/index.js",
     "./package.json": "./package.json"
   },
   "files": [
     "dist/",
-    "renderer/",
-    "templating/"
+    "renderer/"
   ],
   "scripts": {
     "dev": "vite",
