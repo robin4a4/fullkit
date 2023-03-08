@@ -1,4 +1,4 @@
-import { Template } from "@renderkit/renderer/templating";
+import { Template } from "../../../packages/stem-renderer/templating";
 import { MainLayout } from "../../layouts/layout";
 
 export class Page extends Template {

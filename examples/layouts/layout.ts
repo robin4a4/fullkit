@@ -1,5 +1,4 @@
-import { Layout } from "@renderkit/renderer/templating";
-
+import { Layout } from "@renderkit/stem-renderer/templating";
 import "../index.css";
 
 export class MainLayout extends Layout {

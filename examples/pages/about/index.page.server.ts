@@ -1,5 +1,4 @@
-import { newSignal } from "@renderkit/client";
-import { Template } from "@renderkit/renderer/templating";
+import { Template } from "@renderkit/stem-renderer/templating";
 import { MainLayout } from "../../layouts/layout";
 
 export class Page extends Template {
@@ -7,10 +6,8 @@ export class Page extends Template {
   layout = MainLayout;
 
   getContextData() {
-    const [isOpen, setIsOpen] = newSignal(false);
     return {
       buttonContent: "hello",
-      buttonCallback: () => setIsOpen(!isOpen()),
     };
   }
 

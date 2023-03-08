@@ -1,0 +1,43 @@
+{
+  "name": "@renderkit/stem-renderer",
+  "version": "0.0.0",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./vite-plugin-ssr.config.js": "./dist/vite-plugin-ssr.config.js",
+    "./renderer/_default.page.server.js": "./dist/renderer/_default.page.server.js",
+    "./renderer/_default.page.client.js": "./dist/renderer/_default.page.client.js",
+    "./templating": "./dist/templating/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/",
+    "renderer/",
+    "templating/"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsup"
+  },
+  "dependencies": {
+    "vite-plugin-ssr": "^0.4.49",
+    "compile-include-html": "2.1.1"
+  },
+  "peerDependencies": {
+    "vite-plugin-ssr": "^0.4.49"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "tsup": "^6.4.0",
+    "typescript": "4.9.1-beta",
+    "vite": "^3.2.3"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
+}

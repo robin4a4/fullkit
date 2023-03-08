@@ -8,8 +8,7 @@
     "packages/client",
     "packages/server",
     "packages/cli",
-    "packages/renderer",
-    "packages/testrenderer"
+    "packages/stem-renderer"
   ],
   "scripts": {
     "build": "turbo run build",
