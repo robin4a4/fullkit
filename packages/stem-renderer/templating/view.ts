@@ -12,7 +12,7 @@ type BaseTemplateConfig = {
   urlPathname: string;
 };
 
-export class BaseTemplate {
+export abstract class BaseTemplate {
   templateName: string;
   urlPathname: BaseTemplateConfig["urlPathname"];
 
@@ -24,7 +24,7 @@ export class BaseTemplate {
     throw new NotImplementedError();
   }
 
-  renderHtml(contextData: BaseTemplateContext) {
+  _renderHtml(contextData: BaseTemplateContext) {
     const includer = new HtmlParser({
       globalContext: contextData,
       basePath: this.basePath,
@@ -32,9 +32,9 @@ export class BaseTemplate {
     const source = includer.readFile(this.templateName);
     return includer.transform(source);
   }
-  getContextData(layoutContext?: BaseTemplateContext): BaseTemplateContext {
-    console.log("--- LAYOUT WHAT ---", layoutContext);
-
+  getContextData(
+    layoutContext?: BaseTemplateContext
+  ): BaseTemplateContext | Promise<BaseTemplateContext> {
     throw new NotImplementedError();
   }
 }
@@ -48,32 +48,35 @@ export class Template extends BaseTemplate {
       : `./pages/index`;
   }
 
-  getContextData(layoutContext?: BaseTemplateContext): BaseTemplateContext {
-    const userContext = super.getContextData();
-    if (layoutContext) {
-      return { test: "jkhfdkj" };
-    }
-    return super.getContextData();
+  mergeContextData(
+    contentContext: BaseTemplateContext,
+    layoutContext: BaseTemplateContext
+  ): BaseTemplateContext {
+    return { ...layoutContext, ...contentContext };
   }
+
   /**
    * Entry point for rendering a page
    *
    * @returns
    */
-  render() {
+  async render() {
     if (this.layout) {
       const layout = new this.layout({ urlPathname: this.urlPathname });
-      const layoutContext = layout.getContextData();
-      const contentContext = this.getContextData(layoutContext);
-      console.log("--- layout --- >", layoutContext);
-      console.log("--- content --- >", contentContext);
-
-      const layoutHtml = layout.renderHtml(layoutContext);
-
-      const contentHtml = super.renderHtml(contentContext);
+      const layoutContext = await Promise.resolve(layout.getContextData());
+      const contentContext = await Promise.resolve(
+        this.getContextData(layoutContext)
+      );
+      const mergeContextData = this.mergeContextData(
+        contentContext,
+        layoutContext
+      );
+      const layoutHtml = layout._renderHtml(layoutContext);
+      const contentHtml = super._renderHtml(mergeContextData);
       return layoutHtml.replaceAll("<slot></slot>", contentHtml);
     }
-    return super.renderHtml(this.getContextData());
+    const contextData = await Promise.resolve(this.getContextData());
+    return super._renderHtml(contextData);
   }
 
   post(requestBody: Record<string, any>) {

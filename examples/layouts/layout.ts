@@ -6,7 +6,7 @@ export class MainLayout extends Layout {
   templateName = "layout.html";
 
   async getData() {
-    return fetch("https://jsonplaceholder.typicode.com/todos/1").then(
+    return fetch("https://jsonplaceholder.typicode.com/todos").then(
       (response) => response.json()
     );
     // const response = await api("GET", { categoryName: params.categoryName });
@@ -26,12 +26,11 @@ export class MainLayout extends Layout {
     // throw new Error(response.status);
   }
 
-  getContextData() {
-    // console.log("test");
-    // const data = await this.getData();
-    // console.log(data);
+  async getContextData() {
+    const data = await this.getData();
     return {
       testLayout: "salut",
+      data: data,
       nav: [
         {
           href: "/about",

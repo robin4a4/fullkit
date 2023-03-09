@@ -6,9 +6,10 @@ export class Page extends Template {
   templateName = "templates/about.html";
   layout = MainLayout;
 
-  getContextData() {
+  async getContextData(layoutContext: TemplateContext<MainLayout>) {
     return {
-      buttonContent: "test",
+      testLayout: "override",
+      buttonContent: layoutContext.testLayout,
     };
   }
 

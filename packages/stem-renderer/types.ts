@@ -29,6 +29,6 @@ type PageContextClient = PageContextBuiltInClient<Page> & PageContextCustom;
 type PageContext = PageContextClient | PageContextServer;
 
 export type BaseTemplateContext = Record<string, any>;
-export type TemplateContext<T extends BaseTemplate> = ReturnType<
-  T["getContextData"]
+export type TemplateContext<T extends BaseTemplate> = Awaited<
+  ReturnType<T["getContextData"]>
 >;
