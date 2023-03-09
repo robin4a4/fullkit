@@ -3,11 +3,11 @@ import { MainLayout } from "../../layouts/layout";
 
 export class Page extends View {
   templateName = "home.html";
-  layout = MainLayout;
+  layoutClass = MainLayout;
 
   getContextData() {
     return {
-      test: "world",
+      test: this.pageParam,
     };
   }
 }

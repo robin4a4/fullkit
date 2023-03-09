@@ -1,0 +1,7 @@
+<div class="flex items-center gap-4 md:gap-8 flex-wrap">
+  <for condition="category of categories">
+    <a href="{category.name}">
+      <Pill {category} isChecked={currentCategory === category.name} />
+    </a>
+  </for>
+</div>

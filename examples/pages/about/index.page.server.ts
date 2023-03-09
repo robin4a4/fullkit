@@ -1,12 +1,11 @@
-import { Template, TemplateContext } from "@renderkit/stem-renderer";
-import { api } from "../../api/api";
+import { View, ViewContext } from "@renderkit/stem-renderer";
 import { MainLayout } from "../../layouts/layout";
 
-export class Page extends Template {
+export class Page extends View {
   templateName = "templates/about.html";
-  layout = MainLayout;
+  layoutClass = MainLayout;
 
-  async getContextData(layoutContext: TemplateContext<MainLayout>) {
+  async getContextData(layoutContext: ViewContext<MainLayout>) {
     return {
       testLayout: "override",
       buttonContent: layoutContext.testLayout,
@@ -17,7 +16,7 @@ export class Page extends Template {
     console.log(requestBody);
     requestBody.categoryId = parseInt(requestBody.categoryId, 10);
     const data = requestBody as any;
-    await api("POST", { data });
+    // await api("POST", { data });
     return super.post(requestBody);
   }
 }

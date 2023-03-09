@@ -3,6 +3,6 @@ export type {
   PageContextServer,
   PageContextClient,
   PageContext,
-  TemplateContext,
+  ViewContext,
 } from "./types";
-export { Template, Layout, BaseTemplate } from "./templating/view";
+export { View, Layout, BaseView } from "./templating/view";

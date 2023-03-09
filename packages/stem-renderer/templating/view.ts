@@ -1,5 +1,5 @@
 import { HtmlParser } from "compile-include-html";
-import { BaseTemplateContext, TemplateContext } from "../types";
+import { BaseViewContext, PageContext } from "../types";
 
 export class NotImplementedError extends Error {
   constructor() {
@@ -8,23 +8,37 @@ export class NotImplementedError extends Error {
   }
 }
 
-type BaseTemplateConfig = {
-  urlPathname: string;
+type BaseViewConfig = {
+  urlPathname: PageContext["urlPathname"];
+  routeParams: PageContext["routeParams"];
 };
 
-export abstract class BaseTemplate {
+export abstract class BaseView {
   templateName: string;
-  urlPathname: BaseTemplateConfig["urlPathname"];
+  urlPathname: BaseViewConfig["urlPathname"];
+  routeParams: Exclude<BaseViewConfig["routeParams"], undefined>;
+  pageParam: keyof Exclude<BaseViewConfig["routeParams"], undefined> | null;
 
-  constructor(config: BaseTemplateConfig) {
+  constructor(config: BaseViewConfig) {
     this.urlPathname = config.urlPathname;
+    this.routeParams = config.routeParams || {};
+    this.pageParam = null;
+    const splitUrl = this.urlPathname.split("/");
+    if (splitUrl.length > 1) {
+      const currentPageIdentifier = splitUrl[splitUrl.length - 1];
+      for (const [, value] of Object.entries(this.routeParams)) {
+        if (currentPageIdentifier === value) {
+          this.pageParam = value;
+        }
+      }
+    }
   }
 
   get basePath(): string {
     throw new NotImplementedError();
   }
 
-  _renderHtml(contextData: BaseTemplateContext) {
+  _renderHtml(contextData: BaseViewContext) {
     const includer = new HtmlParser({
       globalContext: contextData,
       basePath: this.basePath,
@@ -33,25 +47,30 @@ export abstract class BaseTemplate {
     return includer.transform(source);
   }
   getContextData(
-    layoutContext?: BaseTemplateContext
-  ): BaseTemplateContext | Promise<BaseTemplateContext> {
+    layoutContext?: BaseViewContext
+  ): BaseViewContext | Promise<BaseViewContext> {
     throw new NotImplementedError();
   }
 }
 
-export class Template extends BaseTemplate {
-  layout?: typeof Layout;
+export class View extends BaseView {
+  layoutClass?: typeof Layout;
 
   get basePath(): string {
-    return this.urlPathname !== "/"
-      ? `./pages${this.urlPathname}`
-      : `./pages/index`;
+    let base =
+      this.urlPathname !== "/" ? `./pages${this.urlPathname}` : `./pages/index`;
+    if (this.routeParams) {
+      for (const [key, value] of Object.entries(this.routeParams)) {
+        base = base.replaceAll(value, `@${key}`);
+      }
+    }
+    return base;
   }
 
   mergeContextData(
-    contentContext: BaseTemplateContext,
-    layoutContext: BaseTemplateContext
-  ): BaseTemplateContext {
+    contentContext: BaseViewContext,
+    layoutContext: BaseViewContext
+  ): BaseViewContext {
     return { ...layoutContext, ...contentContext };
   }
 
@@ -61,8 +80,11 @@ export class Template extends BaseTemplate {
    * @returns
    */
   async render() {
-    if (this.layout) {
-      const layout = new this.layout({ urlPathname: this.urlPathname });
+    if (this.layoutClass) {
+      const layout = new this.layoutClass({
+        urlPathname: this.urlPathname,
+        routeParams: this.routeParams,
+      });
       const layoutContext = await Promise.resolve(layout.getContextData());
       const contentContext = await Promise.resolve(
         this.getContextData(layoutContext)
@@ -84,7 +106,7 @@ export class Template extends BaseTemplate {
   }
 }
 
-export class Layout extends BaseTemplate {
+export class Layout extends BaseView {
   get basePath(): string {
     return `./layouts`;
   }

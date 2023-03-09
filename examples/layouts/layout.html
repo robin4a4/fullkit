@@ -1,8 +1,7 @@
-<section>
-    <nav>
-        <ul>
-            <for condition="const item of nav"><li><a href="{item.href}" style="{item.isActive ? 'background-color: red;' : ''}">{item.name}</a></li></for/>
-        </ul>
-    </nav>
+<div class="mx-auto w-full md:w-[760px] flex flex-col gap-32 px-16 pb-32">
+  <include src="components/Header.html"></include>
+  <include src="components/LinkForm.html"></include>
+  <div class="flex flex-col gap-24">
     <slot></slot>
-</section>
+  </div>
+</div>
