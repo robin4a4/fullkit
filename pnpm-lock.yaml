@@ -13,7 +13,7 @@ importers:
   examples:
     specifiers:
       '@fullkit/client': workspace:*
-      '@fullkit/server': ^0.0.3
+      '@fullkit/server': workspace:*
       '@fullkit/stem-renderer': workspace:*
       '@prisma/client': ^4.11.0
       autoprefixer: ^10.4.13
@@ -4051,7 +4051,7 @@ packages:
       fast-glob: 3.2.12
       picocolors: 1.0.0
       sirv: 2.0.2
-      vite: 4.1.4
+      vite: 4.1.4_@types+node@18.15.0
     dev: false
 
   /vite/3.2.5:
