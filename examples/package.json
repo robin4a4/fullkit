@@ -1,4 +1,6 @@
 {
+  "name": "example",
+  "private": true,
   "scripts": {
     "dev": "pnpm run server",
     "prod": "pnpm run build && pnpm run server:prod",
