@@ -1,3 +1,4 @@
+#!/bin/env node
 import { cac } from "cac";
 import { startServer } from "./server";
 
