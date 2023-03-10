@@ -1,6 +1,22 @@
 {
   "name": "@renderkit/stem-renderer",
   "version": "0.0.0",
+  "license": "MIT",
+  "author": "Robin Marillia",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robin4a4/renderkit.git"
+  },
+  "keywords": [
+    "html",
+    "vite",
+    "ssr",
+    "framework",
+    "server"
+  ],
   "type": "module",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -35,9 +51,5 @@
     "tsup": "^6.4.0",
     "typescript": "4.9.1-beta",
     "vite": "^3.2.3"
-  },
-  "license": "MIT",
-  "publishConfig": {
-    "access": "public"
   }
 }

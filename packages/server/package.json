@@ -1,15 +1,28 @@
 {
   "name": "@renderkit/server",
   "version": "0.0.0",
+  "license": "MIT",
+  "author": "Robin Marillia",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/robin4a4/renderkit.git"
+  },
+  "keywords": [
+    "html",
+    "vite",
+    "ssr",
+    "framework",
+    "server"
+  ],
   "bin": {
     "renderkit": "dist/cli.js"
   },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "dev": "pnpm run build --watch",
     "build": "tsup --format cjs,esm",
