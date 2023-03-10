@@ -13,7 +13,6 @@ importers:
   examples:
     specifiers:
       '@prisma/client': ^4.11.0
-      '@renderkit/cli': workspace:*
       '@renderkit/client': workspace:*
       '@renderkit/server': workspace:*
       '@renderkit/stem-renderer': workspace:*
@@ -23,33 +22,20 @@ importers:
       tailwindcss: ^3.2.7
       typescript: ^4.9.4
       vite: ^4.0.3
-      vite-plugin-ssr: 0.4.91
+      vite-plugin-ssr: ^0.4.49
     dependencies:
       '@prisma/client': 4.11.0_prisma@4.11.0
-      '@renderkit/cli': link:../packages/cli
       '@renderkit/client': link:../packages/client
       '@renderkit/server': link:../packages/server
       '@renderkit/stem-renderer': link:../packages/stem-renderer
       typescript: 4.9.5
       vite: 4.1.4
-      vite-plugin-ssr: 0.4.91_vite@4.1.4
+      vite-plugin-ssr: 0.4.92_vite@4.1.4
     devDependencies:
-      autoprefixer: 10.4.13_postcss@8.4.21
+      autoprefixer: 10.4.14_postcss@8.4.21
       postcss: 8.4.21
       prisma: 4.11.0
       tailwindcss: 3.2.7
-
-  packages/cli:
-    specifiers:
-      '@renderkit/server': workspace:*
-      '@types/node': ^16.4.0
-      cac: ^6.7.14
-      esbuild: ^0.12.15
-    dependencies:
-      '@renderkit/server': link:../server
-      '@types/node': 16.18.14
-      cac: 6.7.14
-      esbuild: 0.12.29
 
   packages/client:
     specifiers:
@@ -74,6 +60,7 @@ importers:
       compression: ^1.7.4
       cross-env: ^7.0.3
       esbuild: ^0.12.15
+      esbuild-config: ^1.0.1
       express: ^4.18.1
       multer: 1.4.5-lts.1
       sirv: ^2.0.2
@@ -83,19 +70,20 @@ importers:
       vite-plugin-ssr: ^0.4.77
     dependencies:
       typescript: 4.9.5
-      vite: 4.1.4_@types+node@18.14.6
-      vite-plugin-ssr: 0.4.91_vite@4.1.4
+      vite: 4.1.4_@types+node@18.15.0
+      vite-plugin-ssr: 0.4.92_vite@4.1.4
     devDependencies:
       '@types/body-parser': 1.19.2
       '@types/compression': 1.7.2
       '@types/express': 4.17.17
       '@types/multer': 1.4.7
-      '@types/node': 18.14.6
+      '@types/node': 18.15.0
       body-parser: 1.20.2
       cac: 6.7.14
       compression: 1.7.4
       cross-env: 7.0.3
       esbuild: 0.12.29
+      esbuild-config: 1.0.1
       express: 4.18.2
       multer: 1.4.5-lts.1
       sirv: 2.0.2
@@ -110,7 +98,7 @@ importers:
       vite-plugin-ssr: ^0.4.49
     dependencies:
       compile-include-html: 2.2.5_typescript@4.9.1-beta
-      vite-plugin-ssr: 0.4.91_vite@3.2.5
+      vite-plugin-ssr: 0.4.92_vite@3.2.5
     devDependencies:
       tsup: 6.6.3_typescript@4.9.1-beta
       typescript: 4.9.1-beta
@@ -550,7 +538,7 @@ packages:
     resolution: {integrity: sha512-ALYone6pm6QmwZoAgeyNksccT9Q4AWZQ6PvfwR37GT6r6FWUPguq6sUmNGSMV2Wr761oQoBxwGGa6DR5o1DC9g==}
     dependencies:
       '@types/connect': 3.4.35
-      '@types/node': 18.14.6
+      '@types/node': 18.15.0
     dev: true
 
   /@types/chai-subset/1.3.3:
@@ -572,13 +560,13 @@ packages:
   /@types/connect/3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
-      '@types/node': 18.14.6
+      '@types/node': 18.15.0
     dev: true
 
   /@types/express-serve-static-core/4.17.33:
     resolution: {integrity: sha512-TPBqmR/HRYI3eC2E5hmiivIzv+bidAfXofM+sbonAGvyDhySGw9/PQZFt2BLOrjUUR++4eJVpx6KnLQK1Fk9tA==}
     dependencies:
-      '@types/node': 18.14.6
+      '@types/node': 18.15.0
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
     dev: true
@@ -602,12 +590,8 @@ packages:
       '@types/express': 4.17.17
     dev: true
 
-  /@types/node/16.18.14:
-    resolution: {integrity: sha512-wvzClDGQXOCVNU4APPopC2KtMYukaF1MN/W3xAmslx22Z4/IF1/izDMekuyoUlwfnDHYCIZGaj7jMwnJKBTxKw==}
-    dev: false
-
-  /@types/node/18.14.6:
-    resolution: {integrity: sha512-93+VvleD3mXwlLI/xASjw0FzKcwzl3OdTCzm1LaRfqgS21gfFtK3zDXM5Op9TeeMsJVOaJ2VRDpT9q4Y3d0AvA==}
+  /@types/node/18.15.0:
+    resolution: {integrity: sha512-z6nr0TTEOBGkzLGmbypWOGnpSpSIBorEhC4L+4HeQ2iezKCi4f77kyslRwvHeNitymGQ+oFyIWGP96l/DPSV9w==}
     dev: true
 
   /@types/qs/6.9.7:
@@ -622,7 +606,7 @@ packages:
     resolution: {integrity: sha512-NUo5XNiAdULrJENtJXZZ3fHtfMolzZwczzBbnAeBbqBwG+LaG6YaJtuwzwGSQZ2wsCrxjEhNNjAkKigy3n8teQ==}
     dependencies:
       '@types/mime': 3.0.1
-      '@types/node': 18.14.6
+      '@types/node': 18.15.0
     dev: true
 
   /@vitest/expect/0.28.5:
@@ -745,15 +729,15 @@ packages:
     resolution: {integrity: sha512-jgsaNduz+ndvGyFt3uSuWqvy4lCnIJiovtouQN5JZHOKCS2QuhEdbcQHFhVksz2N2U9hXJo8odG7ETyWlEeuDw==}
     dev: true
 
-  /autoprefixer/10.4.13_postcss@8.4.21:
-    resolution: {integrity: sha512-49vKpMqcZYsJjwotvt4+h/BCjJVnhGwcLpDt5xkcaOG3eLrG/HUYLagrihYsQ+qrIBgIzX1Rw7a6L8I/ZA1Atg==}
+  /autoprefixer/10.4.14_postcss@8.4.21:
+    resolution: {integrity: sha512-FQzyfOsTlwVzjHxKEqRIAdJx9niO6VCBCoEwax/VLSoQF29ggECcPuBqUMZ+u8jCZOPSy8b8/8KnuFbp0SaFZQ==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.21.5
-      caniuse-lite: 1.0.30001462
+      caniuse-lite: 1.0.30001464
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -825,8 +809,8 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001462
-      electron-to-chromium: 1.4.324
+      caniuse-lite: 1.0.30001464
+      electron-to-chromium: 1.4.327
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
     dev: true
@@ -877,8 +861,8 @@ packages:
     engines: {node: '>= 6'}
     dev: true
 
-  /caniuse-lite/1.0.30001462:
-    resolution: {integrity: sha512-PDd20WuOBPiasZ7KbFnmQRyuLE7cFXW2PVd7dmALzbkUXEP46upAuCDm9eY9vho8fgNMGmbAX92QBZHzcnWIqw==}
+  /caniuse-lite/1.0.30001464:
+    resolution: {integrity: sha512-oww27MtUmusatpRpCGSOneQk2/l5czXANDSFvsc7VuOQ86s3ANhZetpwXNf1zY/zdfP63Xvjz325DAdAoES13g==}
     dev: true
 
   /chai/4.3.7:
@@ -1104,8 +1088,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: true
 
-  /electron-to-chromium/1.4.324:
-    resolution: {integrity: sha512-m+eBs/kh3TXnCuqDF6aHLLRwLK2U471JAbZ1KYigf0TM96fZglxv0/ZFBvyIxnLKsIWUoDiVnHTA2mhYz1fqdA==}
+  /electron-to-chromium/1.4.327:
+    resolution: {integrity: sha512-DIk2H4g/3ZhjgiABJjVdQvUdMlSABOsjeCm6gmUzIdKxAuFrGiJ8QXMm3i09grZdDBMC/d8MELMrdwYRC0+YHg==}
     dev: true
 
   /emoji-regex/9.2.2:
@@ -1143,6 +1127,12 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /esbuild-config/1.0.1:
+    resolution: {integrity: sha512-3Ha0LwC9F1Y1+rertxsDvaSWp+XyvIvI4Lrh3XNcZpuD2qz9xaHUY0yK9ESgh7AplfwVJDYAtOsAStYyArRhXA==}
+    hasBin: true
+    requiresBuild: true
+    dev: true
 
   /esbuild-darwin-64/0.15.18:
     resolution: {integrity: sha512-2WAvs95uPnVJPuYKP0Eqx+Dl/jaYseZEUUT1sjg97TJa4oBtbAKnPnl3b5M9l51/nbx7+QAEtuummJZW0sBEmg==}
@@ -1310,6 +1300,7 @@ packages:
     resolution: {integrity: sha512-w/XuoBCSwepyiZtIRsKsetiLDUVGPVw1E/R3VTFSecIy8UR7Cq3SOtwKHJMFoVqqVG36aGkzh4e8BvpO1Fdc7g==}
     hasBin: true
     requiresBuild: true
+    dev: true
 
   /esbuild/0.15.18:
     resolution: {integrity: sha512-x/R72SmW3sSFRm5zrrIjAhCeQSAWoni3CmHEqfQrZIQTM3lVCdehdwuIqaOtfC2slvpdlLa62GYoN8SxT23m6Q==}
@@ -1774,8 +1765,8 @@ packages:
       minimist: 1.2.8
     dev: true
 
-  /mlly/1.1.1:
-    resolution: {integrity: sha512-Jnlh4W/aI4GySPo6+DyTN17Q75KKbLTyFK8BrGhjNP4rxuUjbRWhE6gHg3bs33URWAF44FRm7gdQA348i3XxRw==}
+  /mlly/1.2.0:
+    resolution: {integrity: sha512-+c7A3CV0KGdKcylsI6khWyts/CYrGTrRVo4R/I7u/cUsy0Conxa6LUhiEzVKIw14lc2L5aiO4+SeVe4TeGRKww==}
     dependencies:
       acorn: 8.8.2
       pathe: 1.1.0
@@ -1948,7 +1939,7 @@ packages:
     resolution: {integrity: sha512-hM58GKXOcj8WTqUXnsQyJYXdeAPbythQgEF3nTcEo+nkD49chjQ9IKm/QJy9xf6JakXptz86h7ecP2024rrLaQ==}
     dependencies:
       jsonc-parser: 3.2.0
-      mlly: 1.1.1
+      mlly: 1.2.0
       pathe: 1.1.0
     dev: true
 
@@ -2174,8 +2165,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /rollup/3.18.0:
-    resolution: {integrity: sha512-J8C6VfEBjkvYPESMQYxKHxNOh4A5a3FlP+0BETGo34HEcE4eTlgCrO2+eWzlu2a/sHs2QUkZco+wscH7jhhgWg==}
+  /rollup/3.19.1:
+    resolution: {integrity: sha512-lAbrdN7neYCg/8WaoWn/ckzCtz+jr70GFfYdlf50OF7387HTg+wiuiqJRFYawwSPpqfqDNYqK7smY/ks2iAudg==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -2478,7 +2469,7 @@ packages:
       joycon: 3.1.1
       postcss-load-config: 3.1.4
       resolve-from: 5.0.0
-      rollup: 3.18.0
+      rollup: 3.19.1
       source-map: 0.8.0-beta.0
       sucrase: 3.29.0
       tree-kill: 1.2.2
@@ -2513,7 +2504,7 @@ packages:
       joycon: 3.1.1
       postcss-load-config: 3.1.4
       resolve-from: 5.0.0
-      rollup: 3.18.0
+      rollup: 3.19.1
       source-map: 0.8.0-beta.0
       sucrase: 3.29.0
       tree-kill: 1.2.2
@@ -2548,7 +2539,7 @@ packages:
       joycon: 3.1.1
       postcss-load-config: 3.1.4
       resolve-from: 5.0.0
-      rollup: 3.18.0
+      rollup: 3.19.1
       source-map: 0.8.0-beta.0
       sucrase: 3.29.0
       tree-kill: 1.2.2
@@ -2682,19 +2673,19 @@ packages:
     engines: {node: '>= 0.8'}
     dev: true
 
-  /vite-node/0.28.5_@types+node@18.14.6:
+  /vite-node/0.28.5_@types+node@18.15.0:
     resolution: {integrity: sha512-LmXb9saMGlrMZbXTvOveJKwMTBTNUH66c8rJnQ0ZPNX+myPEol64+szRzXtV5ORb0Hb/91yq+/D3oERoyAt6LA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     dependencies:
       cac: 6.7.14
       debug: 4.3.4
-      mlly: 1.1.1
+      mlly: 1.2.0
       pathe: 1.1.0
       picocolors: 1.0.0
       source-map: 0.6.1
       source-map-support: 0.5.21
-      vite: 4.1.4_@types+node@18.14.6
+      vite: 4.1.4_@types+node@18.15.0
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -2705,8 +2696,8 @@ packages:
       - terser
     dev: true
 
-  /vite-plugin-ssr/0.4.91_vite@3.2.5:
-    resolution: {integrity: sha512-QSgK5/SXsgw3SN47aUX04dWTdWTXrG14zDIzElBo0cdrBkan8azP1SJ+5nmOOTBEXapFbVmM+NgW1mfjTf/wMA==}
+  /vite-plugin-ssr/0.4.92_vite@3.2.5:
+    resolution: {integrity: sha512-hpocsCDT39KabzcMUtNg6z9dM8Wao0LInmSzPp1OUBz5OwO4p8sLQ5wUcTgbz4712Wn1GKBo2ALkfiOUFCC4jQ==}
     engines: {node: '>=12.19.0'}
     hasBin: true
     peerDependencies:
@@ -2728,8 +2719,8 @@ packages:
       vite: 3.2.5
     dev: false
 
-  /vite-plugin-ssr/0.4.91_vite@4.1.4:
-    resolution: {integrity: sha512-QSgK5/SXsgw3SN47aUX04dWTdWTXrG14zDIzElBo0cdrBkan8azP1SJ+5nmOOTBEXapFbVmM+NgW1mfjTf/wMA==}
+  /vite-plugin-ssr/0.4.92_vite@4.1.4:
+    resolution: {integrity: sha512-hpocsCDT39KabzcMUtNg6z9dM8Wao0LInmSzPp1OUBz5OwO4p8sLQ5wUcTgbz4712Wn1GKBo2ALkfiOUFCC4jQ==}
     engines: {node: '>=12.19.0'}
     hasBin: true
     peerDependencies:
@@ -2748,7 +2739,7 @@ packages:
       fast-glob: 3.2.12
       picocolors: 1.0.0
       sirv: 2.0.2
-      vite: 4.1.4_@types+node@18.14.6
+      vite: 4.1.4
     dev: false
 
   /vite/3.2.5:
@@ -2812,12 +2803,12 @@ packages:
       esbuild: 0.16.17
       postcss: 8.4.21
       resolve: 1.22.1
-      rollup: 3.18.0
+      rollup: 3.19.1
     optionalDependencies:
       fsevents: 2.3.2
     dev: false
 
-  /vite/4.1.4_@types+node@18.14.6:
+  /vite/4.1.4_@types+node@18.15.0:
     resolution: {integrity: sha512-3knk/HsbSTKEin43zHu7jTwYWv81f8kgAL99G5NWBcA1LKvtvcVAC4JjBH1arBunO9kQka+1oGbrMKOjk4ZrBg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -2842,11 +2833,11 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.14.6
+      '@types/node': 18.15.0
       esbuild: 0.16.17
       postcss: 8.4.21
       resolve: 1.22.1
-      rollup: 3.18.0
+      rollup: 3.19.1
     optionalDependencies:
       fsevents: 2.3.2
 
@@ -2874,7 +2865,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.4
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.14.6
+      '@types/node': 18.15.0
       '@vitest/expect': 0.28.5
       '@vitest/runner': 0.28.5
       '@vitest/spy': 0.28.5
@@ -2893,8 +2884,8 @@ packages:
       tinybench: 2.4.0
       tinypool: 0.3.1
       tinyspy: 1.1.1
-      vite: 4.1.4_@types+node@18.14.6
-      vite-node: 0.28.5_@types+node@18.14.6
+      vite: 4.1.4_@types+node@18.15.0
+      vite-node: 0.28.5_@types+node@18.15.0
       why-is-node-running: 2.2.2
     transitivePeerDependencies:
       - less

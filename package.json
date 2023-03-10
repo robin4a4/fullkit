@@ -4,10 +4,8 @@
   "private": true,
   "workspaces": [
     "examples",
-    "testexamples",
     "packages/client",
     "packages/server",
-    "packages/cli",
     "packages/stem-renderer"
   ],
   "scripts": {

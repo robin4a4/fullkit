@@ -1,12 +1,6 @@
 import ssr from "vite-plugin-ssr/plugin";
-import { UserConfig } from "vite";
+import type { UserConfig } from "vite";
 
-const config: UserConfig = {
-  plugins: [
-    ssr({
-      includeAssetsImportedByServer: true,
-    }),
-  ],
-};
-
-export default config;
+export default {
+  plugins: [ssr()],
+} as UserConfig;
