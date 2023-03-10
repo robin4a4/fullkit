@@ -1,14 +1,10 @@
 {
-  "name": "@renderkit/client",
-  "version": "0.0.1",
+  "name": "@fullkit/client",
+  "version": "0.0.3",
   "license": "MIT",
   "author": "Robin Marillia",
   "publishConfig": {
     "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/robin4a4/renderkit.git"
   },
   "keywords": [
     "html",
@@ -16,6 +12,9 @@
     "ssr",
     "framework",
     "server"
+  ],
+  "files": [
+    "dist/"
   ],
   "main": "dist/index.js",
   "module": "dist/index.mjs",

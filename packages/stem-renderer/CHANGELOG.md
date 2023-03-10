@@ -1,4 +1,4 @@
-# @renderkit/stem-renderer
+# @fullkit/stem-renderer
 
 ## 0.0.1
 

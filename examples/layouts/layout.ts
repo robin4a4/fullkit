@@ -1,4 +1,4 @@
-import { Layout } from "@renderkit/stem-renderer";
+import { Layout } from "@fullkit/stem-renderer";
 import "../index.css";
 import { getCategories } from "../api/api";
 

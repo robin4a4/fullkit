@@ -1,4 +1,4 @@
-import { View } from "@renderkit/stem-renderer";
+import { View } from "@fullkit/stem-renderer";
 import { MainLayout } from "../../layouts/layout";
 
 export class Page extends View {

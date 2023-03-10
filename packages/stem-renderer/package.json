@@ -1,14 +1,10 @@
 {
-  "name": "@renderkit/stem-renderer",
-  "version": "0.0.1",
+  "name": "@fullkit/stem-renderer",
+  "version": "0.0.3",
   "license": "MIT",
   "author": "Robin Marillia",
   "publishConfig": {
     "access": "public"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/robin4a4/renderkit.git"
   },
   "keywords": [
     "html",

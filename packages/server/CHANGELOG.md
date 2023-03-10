@@ -1,4 +1,4 @@
-# @renderkit/server
+# @fullkit/server
 
 ## 0.0.1
 

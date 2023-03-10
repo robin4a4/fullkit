@@ -1,7 +1,7 @@
 import { cac } from "cac";
 import { startServer } from "./server";
 
-const cli = cac("renderkit");
+const cli = cac("fullkit");
 
 // dev
 cli

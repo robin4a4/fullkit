@@ -4,15 +4,15 @@
   "scripts": {
     "dev": "pnpm run server",
     "prod": "pnpm run build && pnpm run server:prod",
-    "server": "renderkit serve",
+    "server": "fullkit serve",
     "server:prod": "cross-env NODE_ENV=production ts-node ./server/index.ts",
     "pscale": "pscale connect techwatch main --port 3309"
   },
   "dependencies": {
     "@prisma/client": "^4.11.0",
-    "@renderkit/client": "workspace:*",
-    "@renderkit/server": "workspace:*",
-    "@renderkit/stem-renderer": "workspace:*",
+    "@fullkit/client": "workspace:*",
+    "@fullkit/server": "workspace:*",
+    "@fullkit/stem-renderer": "workspace:*",
     "typescript": "^4.9.4",
     "vite": "^4.0.3",
     "vite-plugin-ssr": "^0.4.49"

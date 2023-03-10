@@ -12,10 +12,10 @@ importers:
 
   examples:
     specifiers:
+      '@fullkit/client': workspace:*
+      '@fullkit/server': workspace:*
+      '@fullkit/stem-renderer': workspace:*
       '@prisma/client': ^4.11.0
-      '@renderkit/client': workspace:*
-      '@renderkit/server': workspace:*
-      '@renderkit/stem-renderer': workspace:*
       autoprefixer: ^10.4.13
       postcss: ^8.4.21
       prisma: ^4.11.0
@@ -24,10 +24,10 @@ importers:
       vite: ^4.0.3
       vite-plugin-ssr: ^0.4.49
     dependencies:
+      '@fullkit/client': link:../packages/client
+      '@fullkit/server': link:../packages/server
+      '@fullkit/stem-renderer': link:../packages/stem-renderer
       '@prisma/client': 4.11.0_prisma@4.11.0
-      '@renderkit/client': link:../packages/client
-      '@renderkit/server': link:../packages/server
-      '@renderkit/stem-renderer': link:../packages/stem-renderer
       typescript: 4.9.5
       vite: 4.1.4
       vite-plugin-ssr: 0.4.92_vite@4.1.4

@@ -1,1 +1,1 @@
-# @renderkit/server
+# @fullkit/server

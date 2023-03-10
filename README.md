@@ -1,4 +1,4 @@
-# Renderkit
+# Fullkit
 
 An collection of packages to allow a django-like experience with fullstack javascript.
 
@@ -7,11 +7,11 @@ An collection of packages to allow a django-like experience with fullstack javas
 To install the server library enter the following command:
 
 ```
-npm install @renderkit/server
+npm install @fullkit/server @fullkit/stem-renderer
 ```
 
-You can also install only the packages you like for exemple `@renderkit/client` to use the reactivity functions inspired by Solidjs.
+You can also install only the packages you like for exemple `@fullkit/client` to use the reactivity functions inspired by Solidjs.
 
 ```
-npm install @renderkit/client
+npm install @fullkit/client
 ```

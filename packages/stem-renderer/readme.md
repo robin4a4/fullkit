@@ -1,1 +1,1 @@
-# @renderkit/stem-renderer
+# @fullkit/stem-renderer
