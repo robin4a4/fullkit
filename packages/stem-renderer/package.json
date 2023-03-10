@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "vite-plugin-ssr": "^0.4.49",
-    "compile-include-html": "2.1.1"
+    "compile-include-html": "2.2.5"
   },
   "peerDependencies": {
     "vite-plugin-ssr": "^0.4.49"

@@ -1,12 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./layouts/**/*.html", "./pages/**/*.html"],
+  content: [
+    "./components/**/*.html",
+    "./layouts/**/*.html",
+    "./pages/**/*.html",
+  ],
   theme: {
     extend: {
-      colors: {
-        "gray-dark": "#333",
-        "gray-darker": "#151515",
-      },
       spacing: {
         1: "1px",
         2: "2px",
@@ -62,5 +62,25 @@ module.exports = {
       },
     },
   },
+  safelist: [
+    "bg-blue-100",
+    "bg-red-100",
+    "bg-orange-100",
+    "bg-purple-100",
+    "bg-yellow-100",
+    "bg-slate-100",
+    "bg-blue-600",
+    "bg-red-600",
+    "bg-orange-600",
+    "bg-purple-600",
+    "bg-yellow-600",
+    "bg-slate-600",
+    "text-blue-600",
+    "text-red-600",
+    "text-orange-600",
+    "text-purple-600",
+    "text-yellow-600",
+    "text-slate-600",
+  ],
   plugins: [],
 };

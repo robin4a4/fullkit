@@ -1,10 +1,22 @@
 import { Layout } from "@renderkit/stem-renderer";
 import "../index.css";
-import logo from "./components/logo.png";
 import { getCategories } from "../api/api";
+
+const colorObject = {
+  design: "blue",
+  javascript: "red",
+  python: "orange",
+  css: "purple",
+  computing: "yellow",
+};
 
 export class MainLayout extends Layout {
   templateName = "layout.html";
+
+  getColorsFromCategories(categoryName: string) {
+    if (categoryName in colorObject) return colorObject[categoryName];
+    return "slate";
+  }
 
   async getData() {
     const response = await getCategories();
@@ -20,22 +32,10 @@ export class MainLayout extends Layout {
 
   async getContextData() {
     const data = await this.getData();
-    console.log(logo);
     return {
-      testLayout: "salut",
+      pageParam: this.pageParam,
       categories: data.body,
-      nav: [
-        {
-          href: "/about",
-          name: "about",
-          isActive: this.urlPathname === "/about",
-        },
-        {
-          href: "/",
-          name: "home",
-          isActive: this.urlPathname === "/",
-        },
-      ],
+      getColorsFromCategory: this.getColorsFromCategories,
     };
   }
 }

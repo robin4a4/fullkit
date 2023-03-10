@@ -123,13 +123,13 @@ importers:
 
   packages/stem-renderer:
     specifiers:
-      compile-include-html: 2.1.1
+      compile-include-html: 2.2.5
       tsup: ^6.4.0
       typescript: 4.9.1-beta
       vite: ^3.2.3
       vite-plugin-ssr: ^0.4.49
     dependencies:
-      compile-include-html: 2.1.1_typescript@4.9.1-beta
+      compile-include-html: 2.2.5_typescript@4.9.1-beta
       vite-plugin-ssr: 0.4.91_vite@3.2.5
     devDependencies:
       tsup: 6.6.3_typescript@4.9.1-beta
@@ -947,10 +947,11 @@ packages:
     resolution: {integrity: sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==}
     engines: {node: '>= 6'}
 
-  /compile-include-html/2.1.1_typescript@4.9.1-beta:
-    resolution: {integrity: sha512-EOCj9bnlTk4ZLtyK+6lxAiSxDLQ3vW1QU/y780uiOyzaY3jWVU5Evqyo9MMh+KzjjVb9D9Nl9rjTRFf2GwlZ7w==}
+  /compile-include-html/2.2.5_typescript@4.9.1-beta:
+    resolution: {integrity: sha512-w5/pa8Fjs4k3qxv8TNjrPATbfQEip37CnWwHLXL5e4f0lxHNL3Uv5aQpZ2Lh1S28c5J5gabSse853FXQDj00Hw==}
     dependencies:
       parse5: 7.1.2
+      riot-tmpl: 3.0.8
       tsup: 6.6.3_typescript@4.9.1-beta
     transitivePeerDependencies:
       - '@swc/core'

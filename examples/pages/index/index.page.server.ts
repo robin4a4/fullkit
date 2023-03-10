@@ -3,9 +3,10 @@ import { MainLayout } from "../../layouts/layout";
 
 export class Page extends View {
   templateName = "home.html";
-  layout = MainLayout;
+  layoutClass = MainLayout;
 
   getContextData() {
+    console.log("pageParam", this.pageParam);
     return {
       test: "world",
     };
