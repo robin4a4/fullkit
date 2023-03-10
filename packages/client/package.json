@@ -9,10 +9,12 @@
   },
   "scripts": {
     "dev": "pnpm run build --watch",
-    "build": "tsup src/index.ts --format cjs,esm --dts"
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "lint": "tsc"
   },
   "dependencies": {
-    "riot-tmpl": "^3.0.8"
+    "riot-tmpl": "^3.0.8",
+    "typescript": "^4.9.4"
   },
   "devDependencies": {
     "tsup": "^6.3.0",

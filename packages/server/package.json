@@ -12,7 +12,8 @@
   },
   "scripts": {
     "dev": "pnpm run build --watch",
-    "build": "tsup --format cjs,esm"
+    "build": "tsup --format cjs,esm",
+    "lint": "tsc"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.2",

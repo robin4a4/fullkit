@@ -2,7 +2,6 @@
   "scripts": {
     "dev": "pnpm run server",
     "prod": "pnpm run build && pnpm run server:prod",
-    "build": "vite build",
     "server": "renderkit serve",
     "server:prod": "cross-env NODE_ENV=production ts-node ./server/index.ts",
     "pscale": "pscale connect techwatch main --port 3309"

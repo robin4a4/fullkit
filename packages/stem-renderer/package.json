@@ -16,6 +16,7 @@
   ],
   "scripts": {
     "dev": "vite",
+    "lint": "tsc",
     "build": "tsup"
   },
   "dependencies": {
