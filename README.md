@@ -1,6 +1,6 @@
 # Fullkit
 
-An collection of packages to allow a django-like experience with fullstack javascript.
+A collection of packages to create a Django-like experience with fullstack javascript.
 
 ## Get started
 
