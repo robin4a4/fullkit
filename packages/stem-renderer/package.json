@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "vite-plugin-ssr": "^0.4.49",
-    "compile-include-html": "2.2.5"
+    "compile-include-html": "2.2.7"
   },
   "peerDependencies": {
     "vite-plugin-ssr": "^0.4.49"

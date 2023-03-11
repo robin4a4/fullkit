@@ -1,12 +1,11 @@
 import { View } from "@fullkit/stem-renderer";
-import { MainLayout } from "../../layouts/layout";
+import { MainLayout } from "../layouts/layout";
 
 export class Page extends View {
   templateName = "home.html";
   layoutClass = MainLayout;
 
   getContextData() {
-    console.log("pageParam", this.pageParam);
     return {
       test: "world",
     };

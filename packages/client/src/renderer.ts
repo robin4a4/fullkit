@@ -9,26 +9,15 @@ interface HTMLElementWithData extends HTMLElement {
   data?: string;
 }
 
-function getMountElementName() {
-  const pathname = window.location.pathname;
-  return `"${pathname
-    .replaceAll("/", "-")
-    .replace(/^-+/, "")
-    .replace(/-+$/, "")}"`;
-}
-
 export function run<TContext extends (...args: any) => any>(
   callback: () => ReturnType<TContext>,
-  mount?: HTMLElementWithData
+  mount: HTMLElementWithData
 ) {
-  const computedMount =
-    mount || document.querySelector(`[data-define=${getMountElementName()}]`);
-
-  if (!computedMount) return;
+  if (!mount) return;
   const context = callback();
   /* TODO: FIX TYPING AND REMOVE AS */
   let current: HTMLElementWithData;
-  let next = computedMount.firstChild as HTMLElementWithData;
+  let next = mount.firstChild as HTMLElementWithData;
   while (next) {
     current = next;
     const type = current.nodeType;
@@ -43,12 +32,13 @@ export function run<TContext extends (...args: any) => any>(
 
 function processNode<TContext>(el: HTMLElementWithData, context: TContext) {
   const type = el.nodeType;
-
   // element
   if (type === 1) {
     for (const { name, value } of [...el.attributes]) {
-      const jAttr = name.slice(1);
-      if (name[0] === "$") {
+      const splitAttName = name.split(":");
+      if (splitAttName.length !== 2) continue;
+      const [method, attrName] = splitAttName;
+      if (method === "on") {
         const eventList = [
           "click",
           "mouseover",
@@ -56,22 +46,22 @@ function processNode<TContext>(el: HTMLElementWithData, context: TContext) {
           "change",
           "keydown",
         ];
-        if (eventList.find((eventName) => eventName === jAttr)) {
-          el.addEventListener(jAttr, () => tmpl(`{${value}}`, context));
+        if (eventList.find((eventName) => eventName === attrName)) {
+          el.addEventListener(attrName, () => tmpl(`{${value}}`, context));
           el.removeAttribute(name);
         }
-        if (jAttr === "display") {
+        if (attrName === "display") {
           newEffect(() => {
             el.style.display = tmpl(`{${value}}`, context) ? "block" : "none";
           });
           el.removeAttribute(name);
         }
       }
-      if (name[0] === ":") {
+      if (method === "bind") {
         const attrValue = el.getAttribute(name);
         el.removeAttribute(name);
         newEffect(() => {
-          el.setAttribute(jAttr, tmpl(attrValue, context));
+          el.setAttribute(attrName, tmpl(attrValue, context));
         });
       }
     }
@@ -80,10 +70,13 @@ function processNode<TContext>(el: HTMLElementWithData, context: TContext) {
   else if (type === 3) {
     if (tmpl.hasExpr(el.data) && el.data) {
       if (/(\(.*\))?(\.)?/g.test(el.data)) {
+        const originalTextContent = el.textContent;
         newEffect(() => {
-          const expr = tmpl(el.data, context);
-          if (expr) {
-            el.data = expr;
+          if (el.data) {
+            const expr = tmpl(originalTextContent, context);
+            if (expr) {
+              el.data = expr;
+            }
           }
         });
       } else el.data = tmpl(el.data, context);

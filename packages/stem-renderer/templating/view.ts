@@ -58,7 +58,7 @@ export class View extends BaseView {
 
   get basePath(): string {
     let base =
-      this.urlPathname !== "/" ? `./pages${this.urlPathname}` : `./pages/index`;
+      this.urlPathname !== "/" ? `./pages${this.urlPathname}` : `./pages`;
     if (this.routeParams) {
       for (const [key, value] of Object.entries(this.routeParams)) {
         base = base.replaceAll(value, `@${key}`);

@@ -1,0 +1,13 @@
+<button-component>
+  Hello {test}
+  <button type="button" on:click="setCount(count()+1)">
+    counter: {count()}
+  </button>
+</button-component>
+<fullkit-form>
+  <form action="./about" method="POST" enctype="multipart/data">
+    <input type="text" name="name" placeholder="name" />
+    <input type="text" name="email" placeholder="email" />
+    <button type="submit">Submit</button>
+  </form>
+</fullkit-form>

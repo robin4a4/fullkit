@@ -9,7 +9,8 @@
     "jsx": "react",
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "experimentalDecorators": true
   },
   "ts-node": {
     "transpileOnly": true,
