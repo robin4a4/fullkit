@@ -4,6 +4,13 @@
 
 ### Patch Changes
 
+- Updated dependencies [6fa9c8e]
+  - @fullkit/server@0.0.5
+
+## null
+
+### Patch Changes
+
 - Updated dependencies [9a97e4f]
   - @fullkit/server@0.0.4
 
