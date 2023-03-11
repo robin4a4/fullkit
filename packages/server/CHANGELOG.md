@@ -1,5 +1,11 @@
 # @fullkit/server
 
+## 0.0.6
+
+### Patch Changes
+
+- 14b84da: fix root page path, fix client syntax, fix tmpl behavior on client, add custom elements
+
 ## 0.0.5
 
 ### Patch Changes
