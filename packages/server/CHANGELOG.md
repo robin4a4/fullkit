@@ -1,5 +1,11 @@
 # @fullkit/server
 
+## 0.0.5
+
+### Patch Changes
+
+- 6fa9c8e: fix shebang for cli
+
 ## 0.0.4
 
 ### Patch Changes
