@@ -1,5 +1,11 @@
 # @fullkit/stem-renderer
 
+## 0.0.5
+
+### Patch Changes
+
+- 14b84da: fix root page path, fix client syntax, fix tmpl behavior on client, add custom elements
+
 ## 0.0.4
 
 ### Patch Changes
