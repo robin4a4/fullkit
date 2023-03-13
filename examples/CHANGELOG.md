@@ -4,6 +4,14 @@
 
 ### Patch Changes
 
+- Updated dependencies [2c3f1b8]
+  - @fullkit/stem-renderer@0.0.6
+  - @fullkit/client@0.0.6
+
+## null
+
+### Patch Changes
+
 - Updated dependencies [14b84da]
   - @fullkit/stem-renderer@0.0.5
   - @fullkit/client@0.0.5
