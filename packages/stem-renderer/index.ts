@@ -1,8 +1,8 @@
-export { createHtml } from "./renderer/createHtml";
+export { createHtml } from "./src/renderer/createHtml";
 export type {
   PageContextServer,
   PageContextClient,
   PageContext,
   ViewContext,
-} from "./types";
-export { View, Layout, BaseView } from "./templating/view";
+} from "./src/types";
+export { View, Layout, BaseView } from "./src/templating/view";

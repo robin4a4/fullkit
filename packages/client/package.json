@@ -22,11 +22,12 @@
   "scripts": {
     "dev": "pnpm run build --watch",
     "build": "tsup src/index.ts --format cjs,esm --dts",
-    "lint": "tsc"
+    "lint": "tsc; eslint src/"
   },
   "dependencies": {
     "riot-tmpl": "^3.0.8",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "eslint-config-custom": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^6.3.0",

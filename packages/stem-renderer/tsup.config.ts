@@ -1,15 +1,15 @@
-import { defineConfig } from 'tsup'
+import { defineConfig } from "tsup";
 
 export default defineConfig({
   entry: [
-    './renderer/_default.page.client.ts',
-    './renderer/_default.page.server.ts',
-    './vite-plugin-ssr.config.ts',
-    './index.ts',
-    './templating/index.ts'
+    "./src/renderer/_default.page.client.ts",
+    "./src/renderer/_default.page.server.ts",
+    "./vite-plugin-ssr.config.ts",
+    "./src/index.ts",
+    "./src/templating/index.ts",
   ],
-  format: 'esm',
+  format: "esm",
   clean: true,
   sourcemap: true,
-  dts: true
-})
+  dts: true,
+});

@@ -28,12 +28,13 @@
   ],
   "scripts": {
     "dev": "vite",
-    "lint": "tsc",
+    "lint": "tsc; eslint src/",
     "build": "tsup"
   },
   "dependencies": {
     "vite-plugin-ssr": "^0.4.49",
-    "compile-include-html": "2.2.7"
+    "compile-include-html": "2.2.7",
+    "eslint-config-custom": "workspace:*"
   },
   "peerDependencies": {
     "vite-plugin-ssr": "^0.4.49"
