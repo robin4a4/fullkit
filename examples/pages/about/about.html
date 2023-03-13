@@ -1,6 +1,6 @@
 <button-component>
   Hello {test}
-  <button type="button" on:click="setCount(count()+1)">
+  <button type="button" on:click="() => setCount(count()+1)">
     counter: {count()}
   </button>
 </button-component>

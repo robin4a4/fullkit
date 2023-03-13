@@ -32,6 +32,7 @@ export function run<TContext extends (...args: any) => any>(
 
 function processNode<TContext>(el: HTMLElementWithData, context: TContext) {
   const type = el.nodeType;
+  console.log;
   // element
   if (type === 1) {
     for (const { name, value } of [...el.attributes]) {
@@ -39,17 +40,8 @@ function processNode<TContext>(el: HTMLElementWithData, context: TContext) {
       if (splitAttName.length !== 2) continue;
       const [method, attrName] = splitAttName;
       if (method === "on") {
-        const eventList = [
-          "click",
-          "mouseover",
-          "mouseout",
-          "change",
-          "keydown",
-        ];
-        if (eventList.find((eventName) => eventName === attrName)) {
-          el.addEventListener(attrName, () => tmpl(`{${value}}`, context));
-          el.removeAttribute(name);
-        }
+        el.addEventListener(attrName, () => tmpl(`{(${value})()}`, context));
+        el.removeAttribute(name);
         if (attrName === "display") {
           newEffect(() => {
             el.style.display = tmpl(`{${value}}`, context) ? "block" : "none";
