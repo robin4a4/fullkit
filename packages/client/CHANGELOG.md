@@ -1,5 +1,11 @@
 # @fullkit/client
 
+## 0.0.6
+
+### Patch Changes
+
+- 2c3f1b8: add callbacks for event listeners instead of calling the function directly
+
 ## 0.0.5
 
 ### Patch Changes
