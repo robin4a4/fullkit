@@ -45,6 +45,7 @@
     "tsup": "^6.3.0"
   },
   "dependencies": {
+    "@fullkit/stem-renderer": "workspace:*",
     "typescript": "^4.9.4",
     "vite": "^4.0.3",
     "vite-plugin-ssr": "^0.4.77",

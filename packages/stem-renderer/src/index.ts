@@ -1,5 +1,6 @@
 export { createHtml } from "./renderer/createHtml";
 export type {
+  Page,
   PageContextServer,
   PageContextClient,
   PageContext,

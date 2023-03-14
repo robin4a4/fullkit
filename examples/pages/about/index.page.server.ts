@@ -8,7 +8,7 @@ export class Page extends View {
   }
 
   post(requestBody: any) {
-    console.log(requestBody);
+    console.log("testuytdgasfjhg");
     return super.post(requestBody);
   }
 }

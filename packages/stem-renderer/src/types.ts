@@ -3,8 +3,8 @@ import type { PageContextBuiltIn } from "vite-plugin-ssr";
 import type { PageContextBuiltInClient } from "vite-plugin-ssr/client"; // When using Server Routing
 import { BaseView, View } from "./templating/view";
 
-type Page = typeof View;
-export type PageProps = {};
+export type Page = typeof View;
+export type PageProps = object;
 
 export type PageContextCustom = {
   Page: Page;

@@ -1,5 +1,7 @@
 import { run } from "./renderer";
 
+type ClientContext = Record<string, any>;
+
 export class NotImplementedError extends Error {
   constructor() {
     super();
@@ -23,7 +25,7 @@ export class Component extends HTMLElement {
   connectedCallback() {
     run(() => this.getContextData(), this);
   }
-  getContextData(): Record<string, any> {
+  getContextData<T>(): Record<string, T> {
     throw new NotImplementedError();
   }
 }

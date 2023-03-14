@@ -5,6 +5,7 @@ import multer from "multer";
 import { renderPage } from "vite-plugin-ssr";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
+import type { Page } from "@fullkit/stem-renderer";
 
 const isProduction = process.env.NODE_ENV === "production";
 
@@ -40,7 +41,10 @@ export async function startServer(options?: TOptions) {
     const pageContextInit = {
       urlOriginal: req.originalUrl,
     };
-    const pageContext = await renderPage(pageContextInit);
+    const pageContext = await renderPage<
+      { Page: Page },
+      typeof pageContextInit
+    >(pageContextInit);
     const { httpResponse } = pageContext;
     if (!httpResponse) return next();
     const { body, statusCode, contentType, earlyHints } = httpResponse;
@@ -54,12 +58,13 @@ export async function startServer(options?: TOptions) {
     const pageContextInit = {
       urlOriginal: req.originalUrl,
     };
-    const pageContext = await renderPage(pageContextInit);
-    // @ts-ignore
+    const pageContext = await renderPage<
+      { Page: Page },
+      typeof pageContextInit
+    >(pageContextInit);
     const { httpResponse, Page } = pageContext;
     if (!httpResponse) return next();
-    // TODO: fix double page creation
-    const page = new Page({ urlPathname: "test" });
+    const page = new Page({ urlPathname: "test", routeParams: {} });
     page.post(req.body);
     const { body, statusCode, contentType, earlyHints } = httpResponse;
 
