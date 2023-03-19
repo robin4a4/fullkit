@@ -1,6 +1,6 @@
 // @ts-ignore
 import { tmpl } from "riot-tmpl";
-import { newEffect } from "./reactivity";
+import { effect } from "./reactivity";
 
 /**
  * Reactive dom attribute
@@ -32,7 +32,6 @@ export function run<TContext extends (...args: any) => any>(
 
 function processNode<TContext>(el: HTMLElementWithData, context: TContext) {
   const type = el.nodeType;
-  console.log;
   // element
   if (type === 1) {
     for (const { name, value } of [...el.attributes]) {
@@ -43,7 +42,7 @@ function processNode<TContext>(el: HTMLElementWithData, context: TContext) {
         el.addEventListener(attrName, () => tmpl(`{(${value})()}`, context));
         el.removeAttribute(name);
         if (attrName === "display") {
-          newEffect(() => {
+          effect(() => {
             el.style.display = tmpl(`{${value}}`, context) ? "block" : "none";
           });
           el.removeAttribute(name);
@@ -52,7 +51,7 @@ function processNode<TContext>(el: HTMLElementWithData, context: TContext) {
       if (method === "bind") {
         const attrValue = el.getAttribute(name);
         el.removeAttribute(name);
-        newEffect(() => {
+        effect(() => {
           el.setAttribute(attrName, tmpl(attrValue, context));
         });
       }
@@ -63,7 +62,7 @@ function processNode<TContext>(el: HTMLElementWithData, context: TContext) {
     if (tmpl.hasExpr(el.data) && el.data) {
       if (/(\(.*\))?(\.)?/g.test(el.data)) {
         const originalTextContent = el.textContent;
-        newEffect(() => {
+        effect(() => {
           if (el.data) {
             const expr = tmpl(originalTextContent, context);
             if (expr) {

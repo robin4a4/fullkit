@@ -47,7 +47,8 @@ export abstract class BaseView {
     return includer.transform(source);
   }
   getContextData(
-    layoutContext?: BaseViewContext
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _layoutContext?: BaseViewContext
   ): BaseViewContext | Promise<BaseViewContext> {
     throw new NotImplementedError();
   }

@@ -1,9 +1,10 @@
-import { run, newSignal, Component, define } from "@fullkit/client";
+import { signal, Component, define } from "@fullkit/client";
 
 @define
 export class ButtonComponent extends Component {
+  count = signal(0);
+
   getContextData() {
-    const [count, setCount] = newSignal(0);
-    return "";
+    return { count: this.count };
   }
 }

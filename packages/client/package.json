@@ -26,11 +26,11 @@
   },
   "dependencies": {
     "riot-tmpl": "^3.0.8",
-    "typescript": "^4.9.4",
+    "typescript": "^5.0.0",
     "eslint-config-custom": "workspace:*"
   },
   "devDependencies": {
-    "tsup": "^6.3.0",
+    "tsup": "^6.7.0",
     "vitest": "^0.28.4"
   }
 }

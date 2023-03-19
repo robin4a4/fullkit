@@ -1,15 +1,19 @@
-export type TSignal<TSignalValue> = [
+export type TUseSignal<TSignalValue> = [
   () => TSignalValue,
   (newValue: TSignalValue) => void
 ];
+export type TSignal<TSignalValue> = {
+  get value(): TSignalValue;
+  set value(newValue: TSignalValue);
+};
 type TExecuteEffect = () => void;
 type TObserver = { execute: TExecuteEffect };
 
 const globalContext: Array<TObserver> = [];
 
-export const newSignal = function <TSignalValue>(
+export const useSignal = function <TSignalValue>(
   value: TSignalValue
-): TSignal<TSignalValue> {
+): TUseSignal<TSignalValue> {
   const subscriptions = new Set<TObserver>();
 
   const read = (): TSignalValue => {
@@ -26,7 +30,7 @@ export const newSignal = function <TSignalValue>(
   return [read, write];
 };
 
-export const newEffect = function (func: any) {
+export const effect = function (func: any) {
   const execute: TExecuteEffect = () => {
     globalContext.push(observer);
     try {
@@ -41,4 +45,23 @@ export const newEffect = function (func: any) {
   };
 
   execute();
+};
+
+export const signal = function <TSignalValue>(
+  val: TSignalValue
+): TSignal<TSignalValue> {
+  const subscriptions = new Set<TObserver>();
+  return {
+    get value() {
+      const observer = globalContext[globalContext.length - 1];
+      if (observer) subscriptions.add(observer);
+      return val;
+    },
+    set value(newValue) {
+      val = newValue;
+      for (const sub of [...subscriptions]) {
+        sub.execute();
+      }
+    },
+  };
 };
