@@ -1,5 +1,13 @@
 # @fullkit/client
 
+## 0.0.7
+
+### Patch Changes
+
+- f667336: fix exports for client
+- Updated dependencies [f667336]
+  - eslint-config-custom@1.0.2
+
 ## 0.0.6
 
 ### Patch Changes

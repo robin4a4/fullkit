@@ -1,5 +1,11 @@
 # eslint-config-custom
 
+## 1.0.2
+
+### Patch Changes
+
+- f667336: fix exports for client
+
 ## 1.0.1
 
 ### Patch Changes
