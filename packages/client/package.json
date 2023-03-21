@@ -19,9 +19,31 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./custom-elements": {
+      "types": "./dist/customElements.d.ts",
+      "import": "./dist/customElements.mjs",
+      "require": "./dist/customElements.js"
+    },
+    "./reactivity": {
+      "types": "./dist/reactivity.d.ts",
+      "import": "./dist/reactivity.mjs",
+      "require": "./dist/reactivity.js"
+    },
+    "./renderer": {
+      "types": "./dist/renderer.d.ts",
+      "import": "./dist/renderer.mjs",
+      "require": "./dist/renderer.js"
+    }
+  },
   "scripts": {
     "dev": "pnpm run build --watch",
-    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "build": "tsup --format cjs,esm",
     "lint": "tsc; eslint src/"
   },
   "dependencies": {

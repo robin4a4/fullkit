@@ -1,4 +1,5 @@
 import { run } from "./renderer";
+// import { effect as reactivityEffect } from "./reactivity";
 
 export class NotImplementedError extends Error {
   constructor() {
@@ -17,6 +18,10 @@ function dasherize(str: unknown): string {
 
 export function define(classObject: CustomElementConstructor) {
   window.customElements.define(dasherize(classObject.name), classObject);
+}
+
+export function effect(target: any, propertyKey: string) {
+  console.log(target, target.count, propertyKey);
 }
 
 export class Component extends HTMLElement {

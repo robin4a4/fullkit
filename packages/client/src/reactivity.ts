@@ -11,6 +11,25 @@ type TObserver = { execute: TExecuteEffect };
 
 const globalContext: Array<TObserver> = [];
 
+export const signal = function <TSignalValue>(
+  val: TSignalValue
+): TSignal<TSignalValue> {
+  const subscriptions = new Set<TObserver>();
+  return {
+    get value() {
+      const observer = globalContext[globalContext.length - 1];
+      if (observer) subscriptions.add(observer);
+      return val;
+    },
+    set value(newValue) {
+      val = newValue;
+      for (const sub of [...subscriptions]) {
+        sub.execute();
+      }
+    },
+  };
+};
+
 export const useSignal = function <TSignalValue>(
   value: TSignalValue
 ): TUseSignal<TSignalValue> {
@@ -45,23 +64,4 @@ export const effect = function (func: any) {
   };
 
   execute();
-};
-
-export const signal = function <TSignalValue>(
-  val: TSignalValue
-): TSignal<TSignalValue> {
-  const subscriptions = new Set<TObserver>();
-  return {
-    get value() {
-      const observer = globalContext[globalContext.length - 1];
-      if (observer) subscriptions.add(observer);
-      return val;
-    },
-    set value(newValue) {
-      val = newValue;
-      for (const sub of [...subscriptions]) {
-        sub.execute();
-      }
-    },
-  };
 };

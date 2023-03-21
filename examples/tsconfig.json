@@ -10,6 +10,12 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "strictPropertyInitialization": false,
+    "experimentalDecorators": true,
+    "paths": {
+      "@fullkit/client/custom-elements": ["../packages/client/dist/customElements.d.ts"],
+      "@fullkit/client/reactivity": ["../packages/client/dist/reactivity.d.ts"],
+      "@fullkit/client/renderer": ["../packages/client/dist/renderer.d.ts"]
+    }
   },
   "ts-node": {
     "transpileOnly": true,
