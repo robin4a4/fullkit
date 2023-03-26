@@ -50,3 +50,18 @@ export async function getLinks(categoryName?: string | null) {
     status: 200,
   };
 }
+
+export async function postLink(link: Record<string, any>) {
+  const body = await prisma.link.create({
+    data: {
+      link: args.data.link,
+      email: args.data.email || "",
+      description: args.data.description || "",
+      categoryId: args.data.categoryId,
+    },
+  });
+  return {
+    body,
+    status: 201,
+  };
+}

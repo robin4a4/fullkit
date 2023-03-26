@@ -3,5 +3,5 @@
   class="{ 'bg-slate-200': category.name === pageParam} flex items-center gap-4 px-12 md:px-16 py-8 text-12 capitalize text-slate-800 md:text-16 rounded-xl border border-slate-200 transition-colors duration-200 hover:bg-slate-200"
 >
   <div class="w-8 h-8 rounded-full bg-{getColorsFromCategory(category.name)}-600"></div>
-  {category.name}
+  {hideTitle ? '' : category.name}
 </a>

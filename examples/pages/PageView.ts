@@ -1,6 +1,6 @@
 import { View } from "@fullkit/stem-renderer";
-import { MainLayout } from "../layouts/layout";
-import { getLinks } from "../lib/api";
+import { MainLayout } from "../layouts/layout.server";
+import { getLinks, postLink } from "../lib/api";
 
 export class PageView extends View {
   templateName = "page.html";
@@ -12,5 +12,12 @@ export class PageView extends View {
     return {
       links: links.body,
     };
+  }
+
+  post(requestBody: Record<string, any>) {
+    const link = requestBody;
+    link.categoryId = this.pageParam;
+    postLink(link);
+    return requestBody;
   }
 }
