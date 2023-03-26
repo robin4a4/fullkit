@@ -1,5 +1,13 @@
 # @fullkit/server
 
+## 0.0.8
+
+### Patch Changes
+
+- Updated dependencies [f667336]
+  - eslint-config-custom@1.0.2
+  - @fullkit/stem-renderer@0.0.7
+
 ## 0.0.7
 
 ### Patch Changes
