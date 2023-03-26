@@ -1,6 +1,6 @@
 import { Layout } from "@fullkit/stem-renderer";
 import "../index.css";
-import { getCategories } from "../api/api";
+import { getCategories } from "../lib/api";
 
 const colorObject = {
   design: "blue",
@@ -18,20 +18,8 @@ export class MainLayout extends Layout {
     return "slate";
   }
 
-  async getData() {
-    const response = await getCategories();
-    if (response.status === 404) {
-      return {
-        body: [],
-        status: 404,
-      };
-    }
-    if (response.status === 200) return response;
-    throw new Error(response.status.toString());
-  }
-
   async getContextData() {
-    const data = await this.getData();
+    const data = await getCategories();
     return {
       pageParam: this.pageParam,
       categories: data.body,

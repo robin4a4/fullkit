@@ -1,11 +1,3 @@
-import { View } from "@fullkit/stem-renderer";
+import { PageView } from "../PageView";
 
-export class Page extends View {
-  templateName = "home.html";
-
-  getContextData() {
-    return {
-      test: this.pageParam,
-    };
-  }
-}
+export { PageView as Page };

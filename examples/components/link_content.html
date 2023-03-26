@@ -1,11 +1,9 @@
-<a
-  href="{link.link}"
-  target="blank"
-  class="flex {link.description ? 'items-start' : 'items-center'} justify-between w-full shadow-md shadow-neutral-200 duration-200 rounded-xl bg-white p-16"
+<div
+  class="flex {link.description ? 'items-start' : 'items-center'} justify-between w-full duration-200 border-b border-slate-200 first:rounded-t-lg last:border-none p-16 hover:bg-slate-50"
 >
-  <div class="flex flex-col gap-8 justify-between max-w-[60%] md:max-w-[70%]">
+  <a href="{link.link}" target="blank" class="flex flex-col gap-8 justify-between max-w-[60%] md:max-w-[70%]">
     <div class="font-bold flex items-center">
-      <span class="text-blue-600 dark:text-blue-500 truncate block">
+      <span class="text-blue-500 truncate block">
         {link.link}
       </span>
       <svg
@@ -23,6 +21,6 @@
       </svg>
     </div>
     <div class="text-gray-500 duration-200">{link.description}</div>
-  </div>
+  </a>
   <include src="Pill.html" with="category: link.category"></include>
-</a>
+</div>

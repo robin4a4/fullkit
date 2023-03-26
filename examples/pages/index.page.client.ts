@@ -1,9 +1,12 @@
-// import { run, newSignal } from "@fullkit/client";
+import { Component, define } from "@fullkit/client/custom-elements";
+import { signal } from "@fullkit/client/reactivity";
 
-// run(() => {
-//   const [count, setCount] = newSignal(0);
-//   return {
-//     count,
-//     setCount,
-//   };
-// }, document.getElementById("app")!);
+@define
+export class LinkForm extends Component {
+  isOpen = signal(false);
+  getContextData() {
+    return {
+      isOpen: this.isOpen,
+    };
+  }
+}
