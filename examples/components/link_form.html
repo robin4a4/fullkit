@@ -3,7 +3,7 @@
     method="post"
     enctype="multipart/form-data"
     action="."
-    class="{'hidden': pageParam === null} group flex flex-col gap-8 border border-slate-300 rounded-md bg-slate-100 outline-none focus-within:ring-2 focus-within:ring-pink-500 focus-within:ring-offset-2"
+    bind:class="{'hidden': pageParam === null} {'opacity-50': isLoading.value} group flex flex-col gap-8 border border-slate-300 rounded-md bg-slate-100 outline-none focus-within:ring-2 focus-within:ring-pink-500 focus-within:ring-offset-2"
   >
     <div class="flex flex-1 gap-8 items-center w-full pl-16">
       <svg
@@ -27,8 +27,8 @@
         required
       />
     </div>
-    <div bind:class="{'hidden': isOpen.value === false} border-t border-slate-300">
-      <div class="flex flex-col gap-8 border-b border-gray-200 duration-200 p-16">
+    <div bind:class="{'hidden': isOpen.value === false}">
+      <div class="flex flex-col gap-8 border-y border-slate-300 duration-200 p-16">
           <p>
             <span class="text-slate-500 duration-200">Description</span>
             <span class="text-gray-400 text-14">(optional)</span>

@@ -52,16 +52,17 @@ export async function getLinks(categoryName?: string | null) {
 }
 
 export async function postLink(link: Record<string, any>) {
-  const body = await prisma.link.create({
-    data: {
-      link: args.data.link,
-      email: args.data.email || "",
-      description: args.data.description || "",
-      categoryId: args.data.categoryId,
-    },
-  });
+  console.log(link);
+  // const body = await prisma.link.create({
+  //   data: {
+  //     link: args.data.link,
+  //     email: args.data.email || "",
+  //     description: args.data.description || "",
+  //     categoryId: args.data.categoryId,
+  //   },
+  // });
   return {
-    body,
+    body: {},
     status: 201,
   };
 }

@@ -1,8 +1,8 @@
-export type TUseSignal<TSignalValue> = [
+export type UseSignal<TSignalValue> = [
   () => TSignalValue,
   (newValue: TSignalValue) => void
 ];
-export type TSignal<TSignalValue> = {
+export type Signal<TSignalValue> = {
   get value(): TSignalValue;
   set value(newValue: TSignalValue);
 };
@@ -13,7 +13,7 @@ const globalContext: Array<TObserver> = [];
 
 export const signal = function <TSignalValue>(
   val: TSignalValue
-): TSignal<TSignalValue> {
+): Signal<TSignalValue> {
   const subscriptions = new Set<TObserver>();
   return {
     get value() {
@@ -32,7 +32,7 @@ export const signal = function <TSignalValue>(
 
 export const useSignal = function <TSignalValue>(
   value: TSignalValue
-): TUseSignal<TSignalValue> {
+): UseSignal<TSignalValue> {
   const subscriptions = new Set<TObserver>();
 
   const read = (): TSignalValue => {

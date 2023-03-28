@@ -14,7 +14,7 @@ export class PageView extends View {
     };
   }
 
-  post(requestBody: Record<string, any>) {
+  async post(requestBody: Record<string, any>) {
     const link = requestBody;
     link.categoryId = this.pageParam;
     postLink(link);

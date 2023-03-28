@@ -102,7 +102,7 @@ export class View extends BaseView {
     return super._renderHtml(contextData);
   }
 
-  post(requestBody: Record<string, any>) {
+  async post(requestBody: Record<string, any>) {
     return requestBody;
   }
 }

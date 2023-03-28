@@ -65,7 +65,7 @@ export async function startServer(options?: TOptions) {
     const { httpResponse, Page } = pageContext;
     if (!httpResponse) return next();
     const page = new Page({ urlPathname: "test", routeParams: {} });
-    page.post(req.body);
+    await page.post(req.body);
     const { body, statusCode, contentType, earlyHints } = httpResponse;
 
     if (res.writeEarlyHints)

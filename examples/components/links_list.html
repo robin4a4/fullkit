@@ -1,5 +1,7 @@
-<div class="flex flex-col border border-slate-200 rounded-lg">
-    <for condition="link of links">
-        <include src="link_content.html" with="link: link"></include>
-    </for>
-</div>
+<links-list>
+    <div class="flex flex-col border border-slate-200 rounded-lg" id="links-list">
+        <for condition="link of links">
+            <include src="link_content.html" with="link: link"></include>
+        </for>
+    </div>
+</links-list>
