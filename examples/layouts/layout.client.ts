@@ -31,10 +31,7 @@ export class LinksList extends Component {
       const link = evt.detail;
       console.log(link);
       const linkEl = document.createElement("li");
-      linkEl.innerHTML = `
-        <a href="${link.link}" target="_blank">${link.description}</a>
-        <span class="text-gray-500">${link.url}</span>
-      `;
+      linkEl.innerHTML = `<include src="test.html"/>`;
       linksList.prepend(linkEl);
     });
 
