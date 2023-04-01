@@ -25,13 +25,9 @@ export class LinkForm extends FullkitForm {
 export class LinksList extends Component {
   connectedCallback(): void {
     const linksList = this.querySelector("#links-list") as HTMLDListElement;
-
     document.addEventListener("link-form-valid", (evt) => {
-      console.log("sdfkjhskjh");
-      const link = evt.detail;
-      console.log(link);
       const linkEl = document.createElement("li");
-      linkEl.innerHTML = `<include src="test.html"/>`;
+      linkEl.innerHTML = `<include src="../components/link_content.html" with="link: ${evt.detail}"></include>`;
       linksList.prepend(linkEl);
     });
 

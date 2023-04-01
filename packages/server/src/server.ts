@@ -2,7 +2,7 @@ import express from "express";
 import compression from "compression";
 import bodyParser from "body-parser";
 import multer from "multer";
-import { renderPage } from "vite-plugin-ssr";
+import { renderPage } from "vite-plugin-ssr/server";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import type { Page } from "@fullkit/stem-renderer";

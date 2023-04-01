@@ -1,46 +1,80 @@
 import ssr from "vite-plugin-ssr/plugin";
 import type { UserConfig } from "vite";
 
-const fs = require("fs");
-const path = require("path");
+import { HtmlParser } from "compile-include-html";
+import type { Plugin } from "vite";
 
-function replaceIncludes() {
-  return {
-    name: "replace-includes",
-    async transform(code, id) {
-      if (!/\/(pages|layouts)\//.test(id) || path.extname(id) !== ".ts") {
-        return;
-      }
-      console.log("transforming", id);
-      const includesRegex = /<include src=['"](.+?)['"]\/>/g;
-      let match = includesRegex.exec(code);
-      let newCode = code;
+const parseReplacement = (withvalue: string) => {
+  const variableReplacements: Record<string, string> = {};
+  const valuesArray = withvalue.split(";");
+  valuesArray.forEach((value) => {
+    const [keyFromArray, valueFromArray] = value.split(":");
+    if (keyFromArray && valueFromArray) {
+      const key = keyFromArray.trim().replaceAll(" ", "");
+      const value = valueFromArray.trim().replace(/^\${(.*)}$/, "$1");
+      variableReplacements[key] = value;
+    }
+  });
+  return variableReplacements;
+};
 
-      while (match) {
-        const includePath = match[1];
-        const includeFilePath = path.resolve(path.dirname(id), includePath);
-        console.log(includePath, includeFilePath);
-        try {
-          const includeFileContent = fs.readFileSync(includeFilePath, "utf8");
-          const replacement = `<span>${includeFileContent}</span>`;
-          newCode = newCode.replace(match[0], replacement);
-        } catch (error) {
-          console.error(`Error while reading file ${includeFilePath}:`, error);
-        }
+function getWithValueAndFullString(source: string): {
+  withValues: string[];
+  fullStrings: string[];
+  srcValues: string[];
+} {
+  const regex = /<include\s+src="([^"]*)"(?:\s+with="([^"]*)")?><\/include>/g;
+  const withValues: string[] = [];
+  const fullStrings: string[] = [];
+  const srcValues: string[] = [];
+  let match;
 
-        match = includesRegex.exec(code);
-      }
+  while ((match = regex.exec(source)) !== null) {
+    srcValues.push(match[1] ? match[1] : "");
 
-      return newCode;
-    },
-  };
+    withValues.push(match[2] ?? "");
+    fullStrings.push(match[0] ?? "");
+  }
+  return { withValues, fullStrings, srcValues };
 }
 
+const includeHtmlPlugin = (): Plugin => {
+  const clientFileRegex = /\.client\./i;
+  return {
+    name: "include-html",
+    transform(code, id) {
+      if (!clientFileRegex.test(id)) {
+        return;
+      }
+
+      const { withValues, fullStrings, srcValues } =
+        getWithValueAndFullString(code);
+
+      const folder = id.substring(0, id.lastIndexOf("/"));
+      srcValues.forEach((src, index) => {
+        console.log(parseReplacement(withValues[index]));
+        const htmlParser = new HtmlParser({
+          variableReplacements: parseReplacement(withValues[index]),
+          basePath: folder,
+        });
+        console.log(folder);
+        const source = htmlParser.readFile(src);
+        const compiledSource = htmlParser.transform(source);
+        console.log(compiledSource);
+        code = code.replaceAll(fullStrings[index], compiledSource);
+      });
+
+      return {
+        code,
+      };
+    },
+  };
+};
 export default {
   plugins: [
     ssr({
       includeAssetsImportedByServer: true,
     }),
-    replaceIncludes(),
+    includeHtmlPlugin(),
   ],
 } as UserConfig;

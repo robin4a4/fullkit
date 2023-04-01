@@ -1,4 +1,4 @@
-import { escapeInject, dangerouslySkipEscape } from "vite-plugin-ssr";
+import { escapeInject, dangerouslySkipEscape } from "vite-plugin-ssr/server";
 import { PageContextServer } from "../types";
 import { createHtml } from "./createHtml";
 

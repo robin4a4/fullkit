@@ -9,10 +9,11 @@
     "pscale": "pscale connect techwatch main --port 3309"
   },
   "dependencies": {
-    "@prisma/client": "^4.11.0",
     "@fullkit/client": "workspace:*",
     "@fullkit/server": "workspace:*",
     "@fullkit/stem-renderer": "workspace:*",
+    "@prisma/client": "^4.11.0",
+    "compile-include-html": "2.2.10",
     "typescript": "^5.0.0",
     "vite": "^4.0.3",
     "vite-plugin-ssr": "^0.4.49"
@@ -22,6 +23,5 @@
     "postcss": "^8.4.21",
     "prisma": "^4.11.0",
     "tailwindcss": "^3.2.7"
-  },
-  "version": null
+  }
 }
