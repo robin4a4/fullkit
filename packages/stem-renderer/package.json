@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "vite-plugin-ssr": "^0.4.49",
-    "compile-include-html": "2.2.7",
+    "compile-include-html": "2.2.13",
     "eslint-config-custom": "workspace:*"
   },
   "peerDependencies": {

@@ -1,3 +1,5 @@
 import { PageView } from "../PageView";
 
-export { PageView as Page };
+export class Page extends PageView {
+  templateName = "../../components/links_list.html";
+}

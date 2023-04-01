@@ -1,6 +1,7 @@
-import type { PageContextBuiltIn } from "vite-plugin-ssr";
-// import type { PageContextBuiltInClient } from 'vite-plugin-ssr/client/router' // When using Client Routing
-import type { PageContextBuiltInClient } from "vite-plugin-ssr/client"; // When using Server Routing
+import type {
+  PageContextBuiltIn,
+  PageContextBuiltInClientWithServerRouting as PageContextBuiltInClient,
+} from "vite-plugin-ssr/types";
 import { BaseView, View } from "./templating/view";
 
 export type Page = typeof View;

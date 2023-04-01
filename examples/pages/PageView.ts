@@ -3,7 +3,7 @@ import { MainLayout } from "../layouts/layout.server";
 import { getLinks, postLink } from "../lib/api";
 
 export class PageView extends View {
-  templateName = "page.html";
+  templateName = "../components/links_list.html";
   layoutClass = MainLayout;
 
   async getContextData() {
@@ -16,7 +16,7 @@ export class PageView extends View {
 
   async post(requestBody: Record<string, any>) {
     const link = requestBody;
-    link.categoryId = this.pageParam;
+    link.categoryName = this.pageParam;
     postLink(link);
     return requestBody;
   }

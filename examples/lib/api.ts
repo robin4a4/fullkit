@@ -2,6 +2,26 @@ import PrismaClient from "./prisma";
 
 const prisma = new PrismaClient();
 
+export async function getCategory(categoryName: string) {
+  let categories = await prisma.category.findMany({
+    ...(categoryName && {
+      where: {
+        name: categoryName,
+      },
+    }),
+  });
+  if (!categories) {
+    return {
+      body: null,
+      status: 404,
+    };
+  }
+  return {
+    body: categories[0],
+    status: 200,
+  };
+}
+
 export async function getCategories() {
   let categories = await prisma.category.findMany();
   if (!categories) {
@@ -53,16 +73,23 @@ export async function getLinks(categoryName?: string | null) {
 
 export async function postLink(link: Record<string, any>) {
   console.log(link);
-  // const body = await prisma.link.create({
-  //   data: {
-  //     link: args.data.link,
-  //     email: args.data.email || "",
-  //     description: args.data.description || "",
-  //     categoryId: args.data.categoryId,
-  //   },
-  // });
+  const category = await getCategory(link.categoryName);
+  if (!category.body) {
+    return {
+      body: null,
+      status: 404,
+    };
+  }
+  const body = await prisma.link.create({
+    data: {
+      link: link.link,
+      email: "",
+      description: link.description || "",
+      categoryId: category?.body?.id,
+    },
+  });
   return {
-    body: {},
+    body: link,
     status: 201,
   };
 }

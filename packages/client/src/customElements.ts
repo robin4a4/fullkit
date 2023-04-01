@@ -1,6 +1,5 @@
 import { signal } from "./reactivity";
 import { run } from "./renderer";
-// import { effect as reactivityEffect } from "./reactivity";
 
 function formDataToObject(data: FormData) {
   const obj: Record<string, any> = {};
@@ -34,12 +33,21 @@ export class Component extends HTMLElement {
     run(() => this.getContextData(), this);
   }
   getContextData(): Record<string, any> {
-    throw new NotImplementedError();
+    return {};
+  }
+
+  listenEvent(
+    eventName: string,
+    callback: (payload: Record<string, any>) => void
+  ) {
+    // @ts-ignore
+    document.addEventListener(eventName, (event: CustomEvent) => {
+      callback(event.detail);
+    });
   }
 }
 
-@define
-export class FullkitForm extends Component {
+export class Form extends Component {
   isLoading = signal(false);
 
   getContextData() {
