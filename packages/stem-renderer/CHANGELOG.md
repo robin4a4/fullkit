@@ -1,5 +1,11 @@
 # @fullkit/stem-renderer
 
+## 0.1.0
+
+### Minor Changes
+
+- 620ae92: add new custom element in client, support for post and mutation
+
 ## 0.0.7
 
 ### Patch Changes
