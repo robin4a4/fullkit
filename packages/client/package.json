@@ -48,11 +48,11 @@
   },
   "dependencies": {
     "riot-tmpl": "^3.0.8",
-    "typescript": "^5.0.0",
-    "eslint-config-custom": "workspace:*"
+    "typescript": "^5.0.0"
   },
   "devDependencies": {
     "tsup": "^6.7.0",
-    "vitest": "^0.28.4"
+    "vitest": "^0.28.4",
+    "eslint-config-custom": "workspace:*"
   }
 }
