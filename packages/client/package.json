@@ -51,8 +51,8 @@
     "typescript": "^5.0.0"
   },
   "devDependencies": {
+    "eslint-config-custom": "workspace:*",
     "tsup": "^6.7.0",
-    "vitest": "^0.28.4",
-    "@fullkit/eslint-config-custom": "workspace:*"
+    "vitest": "^0.28.4"
   }
 }

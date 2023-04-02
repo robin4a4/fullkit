@@ -1,7 +1,8 @@
 {
-  "name": "@fullkit/eslint-config-custom",
+  "name": "eslint-config-custom",
   "main": "index.js",
   "version": "0.1.0",
+  "private": true,
   "dependencies": {
     "eslint-config-turbo": "latest"
   },
