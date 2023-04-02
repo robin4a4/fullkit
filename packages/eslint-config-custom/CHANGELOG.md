@@ -1,5 +1,11 @@
 # eslint-config-custom
 
+## 0.1.1
+
+### Patch Changes
+
+- c753f0e: fix eslint package
+
 ## 1.0.2
 
 ### Patch Changes

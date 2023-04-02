@@ -1,5 +1,13 @@
 # @fullkit/server
 
+## 0.1.1
+
+### Patch Changes
+
+- c753f0e: fix eslint package
+- Updated dependencies [c753f0e]
+  - @fullkit/stem-renderer@0.1.1
+
 ## 0.1.0
 
 ### Minor Changes
