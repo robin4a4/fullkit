@@ -1,5 +1,5 @@
 {
-  "name": "eslint-config-custom",
+  "name": "@fullkit/eslint-config-custom",
   "main": "index.js",
   "version": "0.1.0",
   "dependencies": {

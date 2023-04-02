@@ -47,6 +47,6 @@
     "tsup": "^6.7.0",
     "typescript": "^5.0.0",
     "vite": "^3.2.3",
-    "eslint-config-custom": "workspace:*"
+    "@fullkit/eslint-config-custom": "workspace:*"
   }
 }
